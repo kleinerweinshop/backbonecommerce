@@ -3,15 +3,14 @@ var Checkout = Backbone.View.extend({
 	template: _.template(document.getElementById('checkout-template').innerHTML),
 	initialize: function() {
 		Backbone.history.navigate('checkout', false);
-		this.model = User;
 		this.render();
-		this.payment();
+		this.stripe();
 		return this;
 	},
 	render: function() {
 		this.el.innerHTML = '';
 		this.el.innerHTML = this.template({
-			user: this.model.attributes,
+			user: User.attributes,
 			shoppingcart: this.collection,
 		});
 		return this;
@@ -19,7 +18,10 @@ var Checkout = Backbone.View.extend({
 	events: {
 		'click #navi': 'navi',
 		'click a#toshipping': 'shipping',
-		'click button#submit': 'submit',
+		'click #methods span': 'method',
+		'click span.creditcard': 'creditcard',
+		'click span.ideal': 'ideal',
+		'click span.giropay': 'giropay',
 	},
 	navi: function() {
 		var el = this.el.querySelector('.navi');
@@ -32,49 +34,59 @@ var Checkout = Backbone.View.extend({
 		});
 		new Site().el.append(site.el);
 	},
-	payment: function() {
-		Socket.emit('payment.stripe');
-		Socket.once('payment.stripe', (data) => {
-			this.Stripe = Stripe(data.publishableKey);
-			var elements = this.Stripe.elements();
-			this.stripe = data;
-			this.card = elements.create('card', {
-				hidePostalCode: true,
-				style: {
-					base: {
-						color: '#fff',
-						fontSize: '18px',
-					}
-				}
-			});
-			this.card.mount('#card-element');
-			this.card.on('change', function(event) {
-				var displayError = document.getElementById('card-errors');
-				if (event.error) {
-					displayError.textContent = event.error.message;
-				} else {
-					displayError.textContent = '';
-				}
-			});
+	method: function(e) {
+		for (let el of this.el.querySelector('#methods').children) {
+			el.removeAttribute('active');
+		}
+		e.target.setAttribute('active', true);
+	},
+	creditcard: function() {
+		new CreditcardView({
+			el: this.el.querySelector('#payment'),
+			model: this.model,
 		});
 	},
-	submit: function(e) {
-		e.preventDefault();
-		if (e.target.getAttribute('inactive') == 'true') return;
-		e.target.setAttribute('inactive', true);
-	  this.Stripe.confirmCardPayment(this.stripe.clientSecret, {
-	    payment_method: {
-	      card: this.card,
-	    }
-	  }).then((result) => {
-			e.target.removeAttribute('inactive');
-			if (result.error) return;
-	    if (result.paymentIntent.status === 'succeeded') {
-				Socket.emit('payment.submit');
-				User.set('shoppingcart', 0);
-				Backbone.history.navigate('', true);
-				alert('Vielen Dank für Ihren Einkauf');
-			}
-	  });
+	ideal: function() {
+		new IdealView({
+			el: this.el.querySelector('#payment'),
+			model: this.model,
+		});
 	},
+	giropay: function() {
+		new GiropayView({
+			el: this.el.querySelector('#payment'),
+			model: this.model,
+		});
+	},
+	stripe: function() {
+    var script = document.createElement('script');
+    script.src = "https://js.stripe.com/v3/";
+    document.getElementsByTagName('head')[0].appendChild(script);
+		Socket.emit('payment.stripe');
+		Socket.once('payment.stripe', (data) => {
+			var stripe = Stripe(data.publishableKey)
+			this.model = new Backbone.Model({
+				keys: data,
+				stripe: stripe,
+				card: stripe.elements().create('card', {
+					hidePostalCode: true,
+					style: {
+						base: {
+							color: '#555',
+							fontSize: '18px',
+						}
+					},
+				}),
+				ideal: stripe.elements().create('idealBank', {
+					style: {
+						base: {
+							color: '#555',
+							fontSize: '18px',
+						}
+					},
+				}),
+			});
+			this.creditcard();
+		});
+	}
 });

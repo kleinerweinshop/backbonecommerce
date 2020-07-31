@@ -5,11 +5,11 @@ block content
  script(type='text/javascript' src='/library/backbone.js')
  script(type='text/javascript' src='/library/backbone.native.js')
  script(type='text/javascript' src='/socket.io/socket.io.js')
- script(type='text/javascript' src='https://js.stripe.com/v3/')
 
  //-----models-----//
  include ./models/item.jade
  include ./models/shoppingcart.jade
+ include ./models/payment.jade
  
  //-----sites-----//
  include ./sites/index.jade
@@ -29,6 +29,7 @@ block content
  //-----views-----//
  script(type='text/javascript' src='/javascripts/views/items.js')
  script(type='text/javascript' src='/javascripts/views/shoppingcart.js')
+ script(type='text/javascript' src='/javascripts/views/payment.js')
    
  //-----controller-----//
  script(type='text/javascript' src='/javascripts/controller/site.js')
@@ -38,5 +39,6 @@ block content
  script(type='text/javascript' src='/javascripts/controller/item.js')
  script(type='text/javascript' src='/javascripts/controller/shipping.js')
  script(type='text/javascript' src='/javascripts/controller/checkout.js')
+ script(type='text/javascript' src='/javascripts/controller/thanks.js')
    
  script(type='text/javascript' src='/javascripts/routing.js')

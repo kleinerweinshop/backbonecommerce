@@ -9,6 +9,7 @@ this.pay = async (Cart, callback) => {
 	const paymentIntent = await stripe.paymentIntents.create({
 	  amount: total,
 	  currency: 'eur',
+		payment_method_types: ['card', 'giropay', 'ideal'],
 	  // Verify your integration in this guide by including this parameter
 	  metadata: {integration_check: 'accept_a_payment'},
 	});
@@ -18,4 +19,5 @@ this.pay = async (Cart, callback) => {
 this.check = async (id, callback) => {
 	const intent = await stripe.paymentIntents.retrieve(id);
 	if (intent.status === 'succeeded') return callback();
+	else return callback(intent.status);
 }

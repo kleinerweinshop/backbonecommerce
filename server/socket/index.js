@@ -60,8 +60,8 @@ module.exports = (io) => {
 					Shoppingcart.get({
 						user: User.get('_id'),
 						finished: false,
-					}, (Cart) => {
-						Stripe.pay(Cart, (payment) => {
+					}, (shoppingcart) => {
+						Stripe.pay(shoppingcart, (payment) => {
 							Payment = payment;
 							socket.emit('payment.stripe', {
 								publishableKey: _Config.stripe_publickey,
@@ -72,13 +72,15 @@ module.exports = (io) => {
 				});
 				socket.on('payment.submit', (data) => {
 					if (!Payment) return;
-					Stripe.check(Payment.id, () => {
+					if (data) Payment = data;
+					Stripe.check(Payment.id, (err) => {
+						if (err) return console.error(err);
 						Shoppingcart.get({
 							user: User.get('_id'),
 							finished: false,
-						}, (Cart) => {
-							Orders.new(User, Cart, Payment.id, (Order) => {
-								Shoppingcart.empty(User, Cart);
+						}, (shoppingcart) => {
+							Orders.new(User, shoppingcart, Payment.id, (Order) => {
+								Shoppingcart.empty(User, shoppingcart);
 							});
 						});
 					});

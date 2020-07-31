@@ -206,6 +206,12 @@ a {
 	grid-template-rows: auto 1fr;
 }
 
+.row {
+	display: grid;
+	margin: auto;
+	grid-gap: 20px;
+}
+
 .input {
 	display: grid;
 	width: 400px;
@@ -390,42 +396,32 @@ a {
 	text-decoration: underline;
 }
 
-
-
-
-
-
-
-
-
-/*--slide--*/
-#banner h2 {
-	color: #fe8101;
-	font-size: 50px;
-	grid-column: 1;
-	grid-row: 1;
-	text-align: center;
-	animation-name: slide;
-  animation-duration: 5s;
-	animation-iteration-count: 1;
+#methods {
+	grid-gap: 10px;
 }
 
-#banner h2.a {
-	visibility: hidden;
+#methods span {
+	display: grid;
+	width: auto;
+	height: 40px;
+	padding-left: 10px;
+	font-weight: bold;
+	line-height: 40px;
+	cursor: pointer;
+	background: rgba(155, 155, 155, 0.1);
+	transition: background 0.4s ease;
 }
 
-#banner h2.b {
-	visibility: hidden;
-	animation-delay: 5s;
+#methods span[active] {
+ 	background: rgba(155, 155, 155, 0.4);
 }
 
-#banner h2.c {
-	visibility: hidden;
-	animation-delay: 10s;
+#methods span:hover {
+ 	background: rgba(155, 155, 155, 0.4);
 }
 
-@keyframes slide {
-	0% {transform:translateX(100vw);visibility: visible;}
-  20%, 80% {transform:translateX(0);}
-  100% {transform:translateX(-100vw);}
+#giropay {
+	display: grid;
+	max-width: 200px;
+	cursor: pointer;
 }
