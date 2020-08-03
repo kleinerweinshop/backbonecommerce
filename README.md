@@ -12,7 +12,7 @@ Clientseitig wird das Backbone.js Rendering System genutzt. Die Kommunikation zw
 
 Template System:
 
-Um flexibel und ansprechend für verschiedene Einsatzzwecke zu sein wird ein Template System bereit gestellt. Die Templates können mit Grundkenntnissen in HTML und CSS erstellt oder bearbeitet werden.
+Um flexibel und ansprechend für verschiedene Einsatzzwecke zu sein wird ein Template System bereit gestellt. Die Templates sind in Jade(HTML) geschrieben und können mit Grundkenntnissen in CSS bearbeitet werden.
 
 
 Dashboard:
@@ -30,6 +30,8 @@ Module:
 - Mongoose
 - Socket.io
 - Jade
+- Stripe
+
 
 # Example
 
