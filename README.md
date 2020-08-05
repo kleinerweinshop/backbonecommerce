@@ -1,4 +1,4 @@
-# Backbone E-Commerce
+# Backbone Commerce
 
 ![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
@@ -21,10 +21,18 @@ Start by downloading the repo
 
     $ git clone https://github.com/addiinnocent/backbonecommerce
 
-BackboneCommerce lets you setup everything by simply running the following command:
+Make sure you have installed our two dependencies:
+
+- NodeJS(https://nodejs.org/en/)
+- MongoDB(https://www.mongodb.com)
+    
+Then move do your application folder
 
     $ cd <application folder>
-    $ node install
+    
+And start up everything by
+
+    $ node run
 
 
 ### Example
@@ -43,23 +51,11 @@ BackboneCommerce lets you setup everything by simply running the following comma
 
 ![ScreenShot](https://cdn.discordapp.com/attachments/732593192729575454/732593586792562698/Bildschirmfoto_2020-07-14_um_15.41.36.png)
 
-### Links
-
-Besides our [docs page](https://graphql-code-generator.com/docs/getting-started/index), feel free to go through our published Medium articles to get a better grasp of what GraphQL Code Generator is all about:
-
-- [All available plugins](https://graphql-code-generator.com/docs/plugins/index)
-
-- [**GraphQL Code-Generator** - The True GraphQL-First platform](https://the-guild.dev/blog/graphql-code-generator)
-
-- [**GraphQL Code-Generator v0.9** - What's new?](https://the-guild.dev/blog/graphql-code-generator-090)
-
-- [**GraphQL Code Generator v0.11** - Generate React and Angular Apollo Components, Resolver signatures and much more!](https://the-guild.dev/blog/graphql-code-generator-011)
-
 ### Contributing
 
 Feel free to open issues and pull requests. We're always welcome support from the community.
 
-For a contribution guide, please refer to: https://
+For a contribution guide, please refer to: https://github.com/firstcontributions/first-contributions
 
 ### License
 
