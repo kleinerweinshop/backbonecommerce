@@ -4,16 +4,16 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
 [![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)](https://discord.gg/8vjYZe)
 
-BackboneCommerce is a full stack content management system focussed on selling your products.
-It is free to use, structured and scaleable.
+BackboneCommerce is a full stack Content Management System focussed on selling your product online.
+It is free, well structured and scaleable.
 
-To simplify the process of setting up a selling point, BackboneCommerce features a template System.
+To simplify the process of setting up a unique selling point, BackboneCommerce features a template System.
 Templates are written in Jade and can be altered with little knowledge in HTML and CSS, no further coding needed.
-A CLI is included to generate new pages easy and fast
+A CLI is included to generate new pages easy and fast.
 
 You can try this live on your browser and see some examples. Check out [Särkower](https://särkower.de).
 
-We currently support and maintain [these examples](https://) (Särkower, ...), please feel free to contact us and get your business going.
+We currently support and maintain [these examples](https://) (Särkower, ...), please feel free to contact me and get your business going.
 
 ### Quick Start
 
@@ -21,7 +21,7 @@ Start by downloading the repo
 
     $ git clone https://github.com/addiinnocent/backbonecommerce
 
-Make sure you have installed our two dependencies:
+Make sure you have installed our two dependencies
 
 - NodeJS(https://nodejs.org/en/)
 - MongoDB(https://www.mongodb.com)
@@ -30,10 +30,19 @@ Then move do your application folder
 
     $ cd <application folder>
     
-And start up everything by
+And start up the application by
 
     $ node run
+    
+For production use, make sure you have edited the config.json!
+    
+### CLI
 
+As by now, the CLI supports adding a new page.
+
+    $ new <pagename>
+    
+More is coming!
 
 ### Example
 
