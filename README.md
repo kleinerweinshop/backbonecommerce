@@ -11,7 +11,7 @@ To simplify the process of setting up a selling point, BackboneCommerce features
 Templates are written in Jade and can be altered with little knowledge in HTML and CSS, no further coding needed.
 A CLI is included to generate new pages easy and fast
 
-You can try this live on your browser and see some useful examples. Check out [Särkower](https://särkower.de).
+You can try this live on your browser and see some examples. Check out [Särkower](https://särkower.de).
 
 We currently support and maintain [these examples](https://) (Särkower, ...), please feel free to contact us and get your business going.
 
