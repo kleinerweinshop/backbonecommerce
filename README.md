@@ -2,44 +2,36 @@
 
 ![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
-[![GitHub License](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
 ![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)
 
 
-Vielseitiges Backbone Shop System für Private und Business.
+Ein vielseitiges Backbone Shop System für Private und Business.
 Solider Aufbau, verständliche Syntax und maximal skalierbar.
 
-## Features
+BackboneCommerce is a full stack content management system focussed on selling your products.
+It is free to use, structured and scaleable.
 
-I/O Single Page Applikation:
+To simplify the process of setting up a selling point, BackboneCommerce features a template System.
+Templates are written in Jade and can be altered with little knowledge in HTML and CSS, no further coding needed.
+A CLI is included to generate new pages easy and fast
 
-Clientseitig wird das Backbone.js Rendering System genutzt. Die Kommunikation zwischen Client und Server erfolgt per Socket.io - Daten werden vom Client angefordert, vom Server verarbeitet und in Echtzeit zurückgeschickt.
+You can try this live on your browser and see some useful examples. Check out [Särkower](https://särkower.de).
 
+We currently support and maintain [these examples](https://graphql-code-generator.com/docs/plugins/index) (Särkower, ...), please feel free to contact us and get your business going.
 
-Template System:
+### Quick Start
 
-Um flexibel und ansprechend für verschiedene Einsatzzwecke zu sein wird ein Template System bereit gestellt. Die Templates sind in Jade(HTML) geschrieben und können mit Grundkenntnissen in CSS bearbeitet werden.
+Start by downloading the repo;
 
+    $ git clone https://github.com/addiinnocent/backbonecommerce
 
-Dashboard:
+BackboneCommerce lets you setup everything by simply running the following command:
 
-Ein Dashboard wird bereit gestellt um Angebote und Bestellungen übersichtlich zu gestalten. Dabei wird Graph.js für die Visualisierung benutzt.
-
-# Dependencies:
-
-Programme:
-- NodeJS
-- MongoDB
-
-Module:
-- Express
-- Mongoose
-- Socket.io
-- Jade
-- Stripe
+    $ cd <application folder>
+    $ node install
 
 
-# Example
+### Example
 
 ![ScreenShot](https://cdn.discordapp.com/attachments/732593192729575454/735804430108065823/Bildschirmfoto_2020-07-23_um_12.23.09.png)
 
@@ -51,9 +43,31 @@ Module:
 
 ![ScreenShot](https://cdn.discordapp.com/attachments/732593192729575454/735867330835382282/Bildschirmfoto_2020-07-23_um_16.32.31.png)
 
-# Dashboard
+### Dashboard
 
 ![ScreenShot](https://cdn.discordapp.com/attachments/732593192729575454/732593586792562698/Bildschirmfoto_2020-07-14_um_15.41.36.png)
 
-# Discord Server
-https://discord.gg/d2QhkVn
+### Links
+
+Besides our [docs page](https://graphql-code-generator.com/docs/getting-started/index), feel free to go through our published Medium articles to get a better grasp of what GraphQL Code Generator is all about:
+
+- [All available plugins](https://graphql-code-generator.com/docs/plugins/index)
+
+- [**GraphQL Code-Generator** - The True GraphQL-First platform](https://the-guild.dev/blog/graphql-code-generator)
+
+- [**GraphQL Code-Generator v0.9** - What's new?](https://the-guild.dev/blog/graphql-code-generator-090)
+
+- [**GraphQL Code Generator v0.11** - Generate React and Angular Apollo Components, Resolver signatures and much more!](https://the-guild.dev/blog/graphql-code-generator-011)
+
+### Contributing
+
+Feel free to open issues and pull requests. We're always welcome support from the community.
+
+For a contribution guide, please refer to: http://graphql-code-generator.com/docs/custom-codegen/contributing
+
+### License
+
+[![GitHub License](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
+
+Open GL
+
