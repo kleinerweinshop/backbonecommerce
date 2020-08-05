@@ -11,7 +11,7 @@ var CreditcardView = Backbone.View.extend({
 		return this;
 	},
 	events: {
-		'click button#submit': 'submit',
+		'click button#creditcard': 'submit',
 	},
 	payment: function() {
 		this.Stripe = this.model.get('stripe');
@@ -63,11 +63,12 @@ var IdealView = Backbone.View.extend({
 		return this;
 	},
 	events: {
-		'click button#submit': 'submit',
+		'click button#ideal': 'submit',
 	},
 	payment: function() {
 		this.Stripe = this.model.get('stripe');
 		this.ideal = this.model.get('ideal');
+		console.log(this.model.attributes);
 		this.ideal.mount('#ideal-bank-element');
 	},
 	submit: function(e) {

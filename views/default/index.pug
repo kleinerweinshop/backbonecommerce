@@ -10,34 +10,30 @@ block content
  include ./models/item.pug
  include ./models/shoppingcart.pug
  include ./models/payment.pug
- 
+
  //-----sites-----//
- 
+
  include ./sites/index.pug
  include ./sites/shop.pug
  include ./sites/cart.pug
  include ./sites/item.pug
  include ./sites/shipping.pug
  include ./sites/checkout.pug
- 
+
  div#app
    div.site
 
  //-----models-----//
  script(type='text/javascript' src='/javascripts/models.js')
  script(type='text/javascript' src='/javascripts/collections.js')
- 
+
  //-----views-----//
  script(type='text/javascript' src='/javascripts/views/items.js')
  script(type='text/javascript' src='/javascripts/views/shoppingcart.js')
  script(type='text/javascript' src='/javascripts/views/payment.js')
-   
+
  //-----controller-----//
- script(type='text/javascript' src='/javascripts/controller/test.js')
- script(type='text/javascript' src='/javascripts/controller/test.js')
- script(type='text/javascript' src='/javascripts/controller/okay.js')
- script(type='text/javascript' src='/javascripts/controller/nice.js')
- 
+
  script(type='text/javascript' src='/javascripts/controller/site.js')
  script(type='text/javascript' src='/javascripts/controller/index.js')
  script(type='text/javascript' src='/javascripts/controller/shop.js')
@@ -46,5 +42,5 @@ block content
  script(type='text/javascript' src='/javascripts/controller/shipping.js')
  script(type='text/javascript' src='/javascripts/controller/checkout.js')
  script(type='text/javascript' src='/javascripts/controller/thanks.js')
-   
+
  script(type='text/javascript' src='/javascripts/routing.js')
