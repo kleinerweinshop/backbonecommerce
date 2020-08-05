@@ -1,8 +1,8 @@
 # Backbone E-Commerce
 
 ![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
-![MongoDB](https://img.shields.io/badge/Dependency-MongoDB-brightgreen)
-[![GitHub license](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
+![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
+[![GitHub License](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
 ![Discord](https://img.shields.io/discord/731065286404341770?label=Discord&style=social)
 
 
