@@ -3,12 +3,9 @@ _Traffic = 0;
 
 const fs = require('fs');
 const express = require('express');
-const logger = require('morgan');
 const parser = require('body-parser');
-const methodoverride = require('method-override');
 const favicon = require('serve-favicon');
 const static = require('serve-static');
-const errorhandler = require('errorhandler');
 const http = require('http');
 const https = require('https');
 const path = require('path');
@@ -30,7 +27,6 @@ app.set('views', path.join(__dirname, '..', 'views'));
 app.set('view engine', 'jade');
 app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
-app.use(methodoverride());
 if (_Config.ssl == true) {
 	app.use ((req, res, next) => {
 		if (req.secure) return next();
