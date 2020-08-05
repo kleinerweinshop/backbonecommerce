@@ -39,9 +39,15 @@ For production use, make sure you have edited the config.json!
     
 ### CLI
 
-As by now, the CLI supports adding a new page.
+As by now, the CLI supports:
+
+adding a new page
 
     $ new <pagename>
+
+close application
+
+    $ exit
     
 More is coming!
 
