@@ -66,6 +66,7 @@ More is coming!
 Feel free to open issues and pull requests. We're always welcome support from the community.
 
 For a contribution guide, please refer to: [Contribution Guide](https://github.com/firstcontributions/first-contributions)
+and join our [Discord Channel](https://discord.gg/8vjYZe)
 
 ### License
 
