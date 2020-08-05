@@ -2,6 +2,7 @@
 
 ![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
+![Backbone](https://img.shields.io/badge/Backbone-yellow)
 [![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)](https://discord.gg/8vjYZe)
 
 BackboneCommerce is a full stack Content Management System focussed on selling your product online.
@@ -23,8 +24,8 @@ Start by downloading the repo
 
 Make sure you have installed our two dependencies
 
-- NodeJS(https://nodejs.org/en/)
-- MongoDB(https://www.mongodb.com)
+- [NodeJS](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com)
     
 Then move do your application folder
 
