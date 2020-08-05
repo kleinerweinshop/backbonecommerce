@@ -59,11 +59,11 @@ Besides our [docs page](https://graphql-code-generator.com/docs/getting-started/
 
 Feel free to open issues and pull requests. We're always welcome support from the community.
 
-For a contribution guide, please refer to: http://graphql-code-generator.com/docs/custom-codegen/contributing
+For a contribution guide, please refer to: https://
 
 ### License
 
 [![GitHub License](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
 
-Open GL
+GNU General Public License v3.0
 
