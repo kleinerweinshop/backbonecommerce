@@ -39,7 +39,7 @@ For production use, make sure you have edited the config.json!
     
 ### CLI
 
-As by now, the CLI supports:
+As by now, the application CLI supports:
 
 adding a new page
 
