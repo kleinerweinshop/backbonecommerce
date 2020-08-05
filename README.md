@@ -4,10 +4,6 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
 ![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)
 
-
-Ein vielseitiges Backbone Shop System für Private und Business.
-Solider Aufbau, verständliche Syntax und maximal skalierbar.
-
 BackboneCommerce is a full stack content management system focussed on selling your products.
 It is free to use, structured and scaleable.
 
@@ -17,7 +13,7 @@ A CLI is included to generate new pages easy and fast
 
 You can try this live on your browser and see some useful examples. Check out [Särkower](https://särkower.de).
 
-We currently support and maintain [these examples](https://graphql-code-generator.com/docs/plugins/index) (Särkower, ...), please feel free to contact us and get your business going.
+We currently support and maintain [these examples](https://) (Särkower, ...), please feel free to contact us and get your business going.
 
 ### Quick Start
 
