@@ -1,9 +1,15 @@
 # Backbone E-Commerce
 
+![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
+![MongoDB](https://img.shields.io/badge/Dependency-MongoDB-brightgreen)
+[![GitHub license](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
+https://img.shields.io/discord/731065286404341770?label=Discord&style=social
+
+
 Vielseitiges Backbone Shop System für Private und Business.
 Solider Aufbau, verständliche Syntax und maximal skalierbar.
 
-# Features
+## Features
 
 I/O Single Page Applikation:
 
