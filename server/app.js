@@ -16,7 +16,8 @@ const mongoose = require('mongoose');
 const socketio = require('socket.io');
 
 const database = require('./database/db');
-const routes = require('./routes/routing');
+const routes = require('./routing');
+const cli = require('./cli');
 const sockets = require('./socket');
 
 
@@ -68,4 +69,5 @@ db.once('open', () => {
 	if (_Config.ssl == true) io = socketio(httpsServer);
 	else io = socketio(httpServer);
 	sockets(io);
+	cli();
 });

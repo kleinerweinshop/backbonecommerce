@@ -5,6 +5,7 @@ var Router = Backbone.Router.extend({
 		'cart': 'cart',
 		'thanks': 'thanks',
 		'item/:id': 'item',
+		//-----additional-----//
 		'*404': 'index',
 	},
 	index: () => {
@@ -27,6 +28,7 @@ var Router = Backbone.Router.extend({
 		var site = new Thanks();
 		new Site().el.append(site.el);
 	},
+	//-----new-----//
 });
 
 
