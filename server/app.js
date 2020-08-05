@@ -24,7 +24,7 @@ process.stdout.write('pending...');
 app.set('port', process.env.PORT || _Config.port);
 app.set('safeport', process.env.PORT || _Config.safeport);
 app.set('views', path.join(__dirname, '..', 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
 if (_Config.ssl == true) {

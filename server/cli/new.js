@@ -22,12 +22,12 @@ this.view = (name, callback) => {
 	var newfile;
 	var folder = path.join(__dirname, 'default');
 	var view = path.join(__dirname, '..', '..', 'views', _Config.template, 'sites');
-	var file = fs.createReadStream(path.join(folder, 'default.jade'), 'utf8');
+	var file = fs.createReadStream(path.join(folder, 'default.pug'), 'utf8');
 	file.on('data', (data) => {
 		newfile = data.toString().replace(/DEFAULT/gi, name);
 	});
 	file.on('end', () => {
-  	fs.writeFile(path.join(view, name+'.jade'), newfile, (err) => {
+  	fs.writeFile(path.join(view, name+'.pug'), newfile, (err) => {
 		  if (err) return callback(err);
 			return callback();
 		});
@@ -36,11 +36,11 @@ this.view = (name, callback) => {
 
 this.links = (name, callback) => {
 	var newfile;
-	var index = path.join(__dirname, '..', '..', 'views', _Config.template, 'index.jade');
+	var index = path.join(__dirname, '..', '..', 'views', _Config.template, 'index.pug');
 	var file = fs.createReadStream(index, 'utf8');
 	file.on('data', (data) => {
 		newfile = data.toString();
-		var sites = '//-----sites-----//\n include ./sites/'+name+'.jade';
+		var sites = '//-----sites-----//\n include ./sites/'+name+'.pug';
 		var controller = "//-----controller-----//\n script(type='text/javascript' src='/javascripts/controller/"+name+".js')";
 		newfile = newfile.replace('//-----sites-----//', sites);
 		newfile = newfile.replace('//-----controller-----//', controller);

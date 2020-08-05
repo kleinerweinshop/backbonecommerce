@@ -26,7 +26,7 @@ module.exports = () => {
 			});
 			await New.view(name, (err) => {
 				if (err) return console.error(err);
-				console.log('> view site '+name+'.jade created');
+				console.log('> view site '+name+'.pug created');
 			});
 			await New.routing(name, (err) => {
 				if (err) return console.error(err);
