@@ -3,7 +3,7 @@
 ![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
 [![GitHub License](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
-![Discord](https://img.shields.io/discord/731065286404341770?label=Discord&style=social)
+![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)
 
 
 Vielseitiges Backbone Shop System für Private und Business.
