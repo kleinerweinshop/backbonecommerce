@@ -17,7 +17,7 @@ We currently support and maintain [these examples](https://) (Särkower, ...), p
 
 ### Quick Start
 
-Start by downloading the repo;
+Start by downloading the repo
 
     $ git clone https://github.com/addiinnocent/backbonecommerce
 
