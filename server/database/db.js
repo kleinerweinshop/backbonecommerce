@@ -24,6 +24,7 @@ var ItemSchema = new Schema({
 	info: String,
 	attributes: Array,
 	price: Number,
+	amount: {type: Number, default: 0},
 });
 mongoose.model('Items', ItemSchema);
 

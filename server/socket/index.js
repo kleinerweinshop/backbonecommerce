@@ -24,7 +24,7 @@ module.exports = (io) => {
 				});
 				//-----Items-----//
 				socket.on('items.get', () => {
-					Items.get({}, (data) => {
+					Items.get({amount:{$gt: 0}}, (data) => {
 						socket.emit('items.get', data);
 					});
 				});
@@ -50,6 +50,7 @@ module.exports = (io) => {
 				});
 				socket.on('shoppingcart.amount', (data) => {
 					Shoppingcart.get({_id: data._id}, (entry) => {
+						if (data.amount > entry[0].item.get('amount')) return;
 						entry[0].set('amount', data.amount);
 						entry[0].save();
 					});
@@ -73,7 +74,7 @@ module.exports = (io) => {
 				socket.on('payment.submit', (data) => {
 					if (!Payment) return;
 					if (data) Payment = data;
-					Stripe.check(Payment.id, (err) => {
+					Stripe.validate(Payment.id, (err) => {
 						if (err) return console.error(err);
 						Shoppingcart.get({
 							user: User.get('_id'),

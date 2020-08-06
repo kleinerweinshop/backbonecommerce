@@ -79,7 +79,7 @@ var IdealView = Backbone.View.extend({
 	    payment_method: {
 	      ideal: this.ideal,
 				billing_details: {
-	        name: this.model.get('firstname')+' '+this.model.get('lastname')
+	        name: User.get('firstname')+' '+User.get('lastname')
 	      },
 	    },
 			return_url: 'https://'+window.location.hostname+'/thanks',
@@ -115,7 +115,7 @@ var GiropayView = Backbone.View.extend({
 	  this.Stripe.confirmGiropayPayment(this.model.get('keys').clientSecret, {
 	    payment_method: {
 	      billing_details: {
-	        name: this.model.get('firstname')+' '+this.model.get('lastname')
+	        name: User.get('firstname')+' '+User.get('lastname')
 	      }
 	    },
 			return_url: 'https://'+window.location.hostname+'/thanks',

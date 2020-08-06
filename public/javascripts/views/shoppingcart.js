@@ -30,6 +30,7 @@ var ShoppingcartitemView = Backbone.View.extend({
     this.model.open();
   },
   amount: function(e) {
+    if (e.target.value > this.model.get('item').amount) e.target.value = this.model.get('item').amount;
     this.model.set('amount', e.target.value);
   },
   delete: function() {

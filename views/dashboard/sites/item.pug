@@ -16,7 +16,7 @@ script(type='text/template', id='item-template')
     div#form
       div.input
         label Image
-        input#image(name='image' type='file' value!='<%-image%>')
+        input#image(name='image' type='file')
       div.input
         label Name
         input#input(name='name' value!='<%-name%>')
@@ -35,6 +35,9 @@ script(type='text/template', id='item-template')
       div.input
         label Price
         input#input(name='price' type='number' value!='<%-price%>')
+      div.input
+        label In stock
+        input#input(name='amount' type='number' value!='<%-amount%>')
       div.double
         button.red#remove Remove
         button#send Save

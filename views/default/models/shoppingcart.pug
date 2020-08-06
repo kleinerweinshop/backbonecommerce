@@ -6,5 +6,5 @@ script(type='text/template', id='model-shoppingcart-template')
     li <%-item.attributes[1]%>
     li <%-item.attributes[2]%>
   span.price <%-item.price%>€
-  input(type='number' value!='<%-amount%>' min='0')
+  input(type='number' value!='<%-amount%>' min='0' max!='<%-item.amount%>')
   i#remove(class='fa fa-trash')

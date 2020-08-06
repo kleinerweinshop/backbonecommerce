@@ -16,7 +16,7 @@ this.pay = async (Cart, callback) => {
 	return callback(paymentIntent);
 }
 
-this.check = async (id, callback) => {
+this.validate = async (id, callback) => {
 	const intent = await stripe.paymentIntents.retrieve(id);
 	if (intent.status === 'succeeded') return callback();
 	else return callback(intent.status);

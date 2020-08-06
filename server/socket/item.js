@@ -17,12 +17,20 @@ this.new = (callback) => {
 }
 
 this.update = (id, data, callback) => {
-	this.image(data, (image) => {
-		data.image = image;
+	this.image(data, () => {
 		DB.update(id, data, (Item) => {
 			return callback(Item);
 		});
 	});
+}
+
+this.stock = (Shoppingcart, callback) => {
+	for (let entry of Shoppingcart) {
+		if (entry.item.get('amount')-entry.get('amount') < 1) return callback('err');
+		entry.item.set('amount', entry.item.get('amount')-entry.get('amount'));
+		entry.item.save();
+	}
+	return callback();
 }
 
 this.remove = (id, callback) => {
@@ -32,13 +40,14 @@ this.remove = (id, callback) => {
 }
 
 this.image = (data, callback) => {
-	if (!data.image) return callback('');
+	if (data.image.length < 100) return callback();
 	var file = data.image;
 	file = file.split(';base64,').pop();
 	var imgpath = path.join(__dirname, '..', '..', 'views', _Config.template, 'images');
 	var filename = data._id+'.png';
 	fs.writeFile(imgpath+'/'+filename, file, 'base64', (err) => {
 		if (err) return;
-		return callback('/images/'+filename);
+		data.image = '/images/'+filename;
+		return callback();
 	});
 }

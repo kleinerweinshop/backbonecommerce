@@ -15,9 +15,10 @@ this.getFull = (id, callback) => {
 
 this.new = (User, Cart, payment, callback) => {
 	var array = new Array;
-	for (let item of Cart) {
-		//value += item.get('amount')*item.get('item').price;
-		array.push(ObjectID(item.get('_id')));
+	for (let entry of Cart) {
+		array.push(ObjectID(entry.get('_id')));
+		entry.item.set('amount', entry.item.get('amount')-entry.get('amount'));
+		entry.item.save();
 	}
 	DB.new(User, array, payment, (Order) => {
 		return callback(Order);
