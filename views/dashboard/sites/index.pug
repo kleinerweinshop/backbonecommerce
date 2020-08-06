@@ -1,6 +1,6 @@
 script(type='text/template', id='index-template')
   <%var options = {month: 'long', year: 'numeric'};%>
-  include ../models/sidebar.jade
+  include ../models/sidebar.pug
   div.content
     h3#month <%-date.toLocaleString('en-US', options)%>
     div.arrows

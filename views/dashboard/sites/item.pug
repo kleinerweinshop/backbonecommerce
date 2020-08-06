@@ -1,5 +1,5 @@
 script(type='text/template', id='items-template')
-  include ../models/sidebar.jade
+  include ../models/sidebar.pug
   div.content
     div#top
       div.items
@@ -11,7 +11,7 @@ script(type='text/template', id='items-template')
     
 
 script(type='text/template', id='item-template')
-  include ../models/sidebar.jade
+  include ../models/sidebar.pug
   div.content
     div#form
       div.input
@@ -31,7 +31,7 @@ script(type='text/template', id='item-template')
         input#attr(name='attributes' value!='<%-attributes[2]%>')
       div.input
         label Text
-        textarea#input(name='info' value!='<%-info%>')<%-info%>
+        textarea#input(name='info' value!='<%-info%>') <%-info%>
       div.input
         label Price
         input#input(name='price' type='number' value!='<%-price%>')

@@ -1,5 +1,5 @@
 script(type='text/template', id='orders-template')
-  include ../models/sidebar.jade
+  include ../models/sidebar.pug
   div.content
     div#top
       div.items
@@ -11,7 +11,7 @@ script(type='text/template', id='orders-template')
   
   
 script(type='text/template', id='order-template')
-  include ../models/sidebar.jade
+  include ../models/sidebar.pug
   div.content
     div#form
       p Order ID: <%-_id%>
