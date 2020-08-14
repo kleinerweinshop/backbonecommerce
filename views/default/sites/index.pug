@@ -12,7 +12,8 @@ script(type='text/template', id='index-template')
         span#count <%-User.get('shoppingcart')%>
         span )
   video#video(autoplay muted loop)
-    source(src='/videos/video.mp4' type='video/mp4')
+    source.big(src='/videos/videobig.mp4' type='video/mp4')
+    source.small(src='/videos/videosmall.mp4' type='video/mp4')
   div.content
     button#toshop zum Shop
   div.content#make
@@ -36,5 +37,5 @@ script(type='text/template', id='index-template')
     button mehr lesen
   div.content
     h2 Produkte
-    div#bottles
+    div#products
   include ../models/footer.pug

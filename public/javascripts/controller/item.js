@@ -18,6 +18,8 @@ var Item = Backbone.View.extend({
 	events: {
 		'click #navi': 'navi',
 		'click button': 'tocart',
+		'mousemove .image': 'follow',
+		'mouseout .image': 'reset'
 	},
 	navi: function() {
 		var el = this.el.querySelector('.navi');
@@ -41,4 +43,16 @@ var Item = Backbone.View.extend({
     Socket.emit('shoppingcart.add', this.model.get('_id'));
     User.set('shoppingcart', User.get('shoppingcart')+1);
   },
+	follow: function(e) {
+		var image = e.target;
+		var x = e.clientX-image.width;
+		var y = e.clientY-image.height;
+		if (x > image.width/4 || x < -image.width/4) return;
+		if (y > image.height/4 || y < -image.height/4) return;
+		image.style.transform = 'translateX('+x+'px)';
+		image.style.transform += 'translateY('+y+'px)';
+	},
+	reset: function(e) {
+		e.target.style.transform = '';
+	}
 });

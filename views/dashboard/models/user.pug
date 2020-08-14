@@ -1,0 +1,15 @@
+script(type='text/template', id='model-user-template')
+  span.center
+    <%if(selected == true){%>
+    input(type='checkbox' checked)
+    <%}else{%>
+    input(type='checkbox')
+    <%}%>
+  div.column
+    ul <%-firstname%> <%-lastname%>
+    ul <%-email%>
+  div.list
+    ul <%-street%>
+    ul <%-zip%> <%-town%>
+    ul <%-country%>
+  ul <%-orders%>

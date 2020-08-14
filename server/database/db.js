@@ -10,6 +10,8 @@ var UserSchema = new Schema({
 	zip: String,
 	country: {type: String, default: 'Germany'},
 	shoppingcart: {type: Number, default: 0},
+	orders: {type: Number, default: 0},
+	selected: {type: Boolean, default: false},
 	session: {type: String, default: ''},
 	language: {type: String, default: 'en'},
 	ip: {type: Array, select: false},

@@ -1,0 +1,14 @@
+@media all and (max-width: 1000px) {
+	#make .box {
+		grid-template-columns: 1fr;
+	}
+	#make .box:nth-child(odd) {
+		grid-template-columns: 1fr;
+	}
+	#products {
+		grid-template-columns: 1fr;
+	}
+	.third {
+		grid-template-columns: 1fr;
+	}
+}

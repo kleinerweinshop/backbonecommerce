@@ -3,9 +3,9 @@ var ShoppingcartCollection = Backbone.Collection.extend({
 	total: function(){
 		var total = 0;
 		this.each((model) => {
-			total += Number(model.get('amount'))*Number(model.get('item').price);
+			total += model.get('amount')*parseFloat(model.get('item').price);
 		});
-		return total;
+		return total.toFixed(2);
 	},
 	discount: function(){
 		return (this.subquantity() > 11) ? (this.subtotal() * .1) : 0;

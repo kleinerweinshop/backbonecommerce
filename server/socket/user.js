@@ -13,7 +13,7 @@ this.session = (data, callback) => {
 	if (!data || (ObjectID.isValid(data._id) == false)) return this.new((User) => {
 		return callback(User);
 	});
-	DB.get({_id: data._id, session: data.session}, (User) => {
+	this.get1({_id: data._id, session: data.session}, (User) => {
 		if (!User) return this.new((User) => {
 			return callback(User);
 		});
@@ -26,6 +26,12 @@ this.session = (data, callback) => {
 this.get = (by, callback) => {
 	DB.get(by, (User) => {
 		return callback(User);
+	});
+}
+
+this.get1 = (by, callback) => {
+	DB.get(by, (User) => {
+		return callback(User[0]);
 	});
 }
 

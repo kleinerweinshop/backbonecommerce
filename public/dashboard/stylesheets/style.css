@@ -94,6 +94,11 @@ ul {
 	margin: 0;
 }
 
+.center {
+	display: grid;
+	margin: auto;
+}
+
 .input {
 	display: grid;
 }
@@ -185,19 +190,19 @@ ul {
 	line-height: 40px;
 	font-weight: bold;
 	text-align: center;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	background: #eee;
 	border-bottom: 2px solid #9f8e27;
 }
 
-#items, #orders {
+#items, #orders, #customers, #customer {
 	display: grid;
 	margin-top: 20px;
 }
 
-.item, .order {
+.item, .order, .customer {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	padding-top: 20px;
 	padding-bottom: 10px;
 	text-align: center;
@@ -226,12 +231,12 @@ ul {
 	text-decoration: underline;
 }
 
-#orders .items {
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+#items .items {
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
-#orders .item {
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+#items .item {
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 .check {

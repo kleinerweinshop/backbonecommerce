@@ -4,7 +4,7 @@ var Items = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 		this.getItems((items) => {
-			new ListItemView({
+			new ListView({
 				el: this.el.querySelector('#items'),
 				collection: items,
 			});

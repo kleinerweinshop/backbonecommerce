@@ -4,7 +4,7 @@ var Orders = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 		this.getOrders((orders) => {
-			new ListOrderView({
+			new ListView({
 				el: this.el.querySelector('#orders'),
 				collection: orders,
 			});

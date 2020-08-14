@@ -6,7 +6,7 @@ var Router = Backbone.Router.extend({
 		'dashboard/item': 'items',
 		'dashboard/orders': 'orders',
 		'dashboard/order': 'orders',
-		'dashboard/comments': 'comments',
+		'dashboard/customers': 'customers',
 	},
 	login: () => {
 		var site = new Login();
@@ -27,9 +27,9 @@ var Router = Backbone.Router.extend({
 		var site = new Orders();
 		new Site().el.append(site.el);
 	},
-	comments: () => {
+	customers: () => {
 		if (dashboard != true) return Backbone.history.navigate('dashboard/', true);
-		var site = new Comments();
+		var site = new Customers();
 		new Site().el.append(site.el);
 	},
 });

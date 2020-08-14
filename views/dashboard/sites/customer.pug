@@ -1,6 +1,22 @@
-script(type='text/template', id='comments-template')
+script(type='text/template', id='customers-template')
   include ../models/sidebar.pug
   div.content
-    div.input
-      label Enable Comments
-      input(type='checkbox')
+    div#top
+      div.items
+        span Select
+        span Name
+        span Adress
+        span Orders
+    div#customers
+  
+  
+script(type='text/template', id='customer-template')
+  include ../models/sidebar.pug
+  div.content
+    div#top
+      div.items
+        span Name
+        span Adress
+        span Date
+        span Check
+    div#orders

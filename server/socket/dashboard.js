@@ -47,4 +47,21 @@ module.exports = (socket) => {
 	socket.on('d.order.check', (id) => {
 		Orders.check(id);
 	});
+	//-----Customers-----//
+	socket.on('d.customers.get', () => {
+		Users.get({email: {$exists: true}}, (customers) => {
+			socket.emit('d.customers.get', customers)
+		});
+	});
+	socket.on('d.customer.select', (id) => {
+		Users.get1({_id: id}, (User) => {
+			User.set('selected', !User.get('selected'));
+			User.save();
+		});
+	});
+	socket.on('d.customer.orders', (id) => {
+		Orders.get({user: id}, (orders) => {
+			socket.emit('d.customer.orders', orders)
+		});
+	});
 };

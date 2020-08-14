@@ -13,6 +13,6 @@ var Site = Backbone.View.extend({
 		'click #todashboard': () => Backbone.history.navigate('dashboard/index', true),
 		'click #toitems': () => Backbone.history.navigate('dashboard/items', true),
 		'click #toorders': () => Backbone.history.navigate('dashboard/orders', true),
-		'click #tocomments': () => Backbone.history.navigate('dashboard/comments', true),
+		'click #tocustomers': () => Backbone.history.navigate('dashboard/customers', true),
 	}
 });

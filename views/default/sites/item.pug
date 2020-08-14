@@ -13,7 +13,9 @@ script(type='text/template', id='item-template')
         span#count <%-User.get('shoppingcart')%>
         span )
   div.content#showcase
-    img(src='/images/bottle1.png')
+    div.image
+      div#image
+        img(src!='<%-image%>')
     div.column
       h2 <%-name%>
       div.box

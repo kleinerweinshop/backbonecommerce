@@ -80,6 +80,9 @@ a {
 	cursor: pointer;
 }
 
+source.small {
+	display: none;
+}
 
 
 #header {
@@ -197,7 +200,7 @@ a {
 
 .third {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 1fr 2fr;
 	grid-gap: 10px;
 }
 
@@ -278,31 +281,31 @@ a {
 
 
 
-#bottles {
+#products {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 40px;
 	margin: 50px;
 }
 
-#bottles .item {
+#products .item {
 	opacity: 0.2;
 	transition: opacity 0.4s ease;
 }
 
-#bottles .item:hover {
+#products .item:hover {
 	opacity: 1;
 }
 
-#bottles .item img {
+#products .item img {
 	cursor: pointer;
 }
 
-#bottles .item h3 {
+#products .item h3 {
 	text-align: center;
 }
 
-#bottles .item button {
+#products .item button {
 	margin-top: 20px;
 }
 
@@ -363,8 +366,23 @@ a {
 	grid-template-columns: 1fr 2fr;
 }
 
+#showcase .image {
+	width: 1fr;
+	height: auto;
+	overflow: hidden;
+}
+
+#showcase #image {
+	transition: transform 1s, filter .5s ease-out;
+}
+
+#showcase #image:hover {
+  transform: scale(4);
+}
+
 #showcase img {
 	margin: auto;
+	cursor: zoom-in;
 }
 
 #showcase h2 {

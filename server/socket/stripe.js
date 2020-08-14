@@ -8,7 +8,7 @@ this.pay = async (Cart, callback) => {
 	if (total <= 0) return;
 	const paymentIntent = await stripe.paymentIntents.create({
 	  amount: total,
-	  currency: 'eur',
+	  currency: _Config.currency,
 		payment_method_types: ['card', 'giropay', 'ideal'],
 	  // Verify your integration in this guide by including this parameter
 	  metadata: {integration_check: 'accept_a_payment'},

@@ -16,6 +16,14 @@ script(type='text/template', id='checkout-template')
     h2 Kasse
     div.third
       div.box
+        h3 Lieferanschrift
+        div.column
+          span <%-user.lastname%>, <%-user.firstname%>
+          span <%-user.street%>
+          span <%-user.zip%> <%-user.town%>
+          span <%-user.country%>
+          a#toshipping Adresse ändern
+      div.box
         h3 Zusammenfassung
         div.double
           div
@@ -33,18 +41,10 @@ script(type='text/template', id='checkout-template')
               span <%-shoppingcart.total()%>€
           div
             h3 Versand
-      div.box
-        h3 Lieferanschrift
-        div.column
-          span <%-user.lastname%>, <%-user.firstname%>
-          span <%-user.street%>
-          span <%-user.zip%> <%-user.town%>
-          span <%-user.country%>
-          a#toshipping Adresse ändern
-      div.box#payment
       div.box#methods
         h3 Bezahlmethoden
         span.creditcard(active) Kreditkarte
         span.ideal iDEAL
         span.giropay GiroPay
+      div.box#payment
   include ../models/footer.pug

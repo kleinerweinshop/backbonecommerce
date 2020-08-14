@@ -6,7 +6,7 @@ var Index = Backbone.View.extend({
 		this.getItems((items) => {
 			this.listenTo(User, 'change:shoppingcart', this.count);
 			new ItemsView({
-				el: this.el.querySelector('#bottles'),
+				el: this.el.querySelector('#products'),
 				collection: items,
 			});
 		});

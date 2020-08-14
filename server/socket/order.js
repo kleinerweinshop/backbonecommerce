@@ -21,6 +21,7 @@ this.new = (User, Cart, payment, callback) => {
 		entry.item.save();
 	}
 	DB.new(User, array, payment, (Order) => {
+		User.set('orders', User.get('orders')+1);
 		return callback(Order);
 	});
 }
