@@ -4,7 +4,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
 ![Backbone](https://img.shields.io/badge/Backbone-yellow)
 ![Pug](https://img.shields.io/badge/pugjs-yellow)
-[![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)](https://discord.gg/8vjYZe)
+[![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)](https://discord.gg/9zS5U2H)
 
 BackboneCommerce is a full stack Content Management System focussed on selling your product online.
 It is free, well structured and scaleable.
