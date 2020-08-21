@@ -1,11 +1,11 @@
 # Backbone Commerce
 
-![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
-![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
+[![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)](https://nodejs.org/en/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)](https://www.mongodb.com)
 ![HTML](https://img.shields.io/badge/HTML-red)
 ![CSS](https://img.shields.io/badge/CSS-red)
-![Backbone](https://img.shields.io/badge/Backbone-yellow)
-![Pug](https://img.shields.io/badge/pugjs-yellow)
+[![Backbone](https://img.shields.io/badge/Backbone-yellow)](https://backbonejs.org)
+[![PUG](https://img.shields.io/badge/PUG-yellow)](https://pugjs.org)
 [![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)](https://discord.gg/9zS5U2H)
 
 BackboneCommerce is a full stack Content Management System focussed on selling your product online.
