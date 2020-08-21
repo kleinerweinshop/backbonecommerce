@@ -11,12 +11,12 @@
 BackboneCommerce is a full stack Content Management System focussed on selling your product online.
 It is free, well structured and scaleable.
 
-This CMS contains SINGLE PAGE CLIENT Structure on top of a fast and reliable NODEJS Webserver supported by the document-based MONGODB.
-To simplify the process of setting up and customizing, the CMS features a TEMPLATE SYSTEM.
-Templates are written in PUG(HTML) and can be altered with little knowledge in HTML and CSS, no further coding needed.
+This CMS contains Single Page Client structure on top of a fast and reliable NodeJS Webserver supported by the document-based MongoDB.
+To simplify the process of setting up and customizing, the CMS features a template system.
+Templates are written in Pug(HTML) and can be altered with little knowledge in HTML and CSS, no further coding needed.
 A CLI is included to generate new pages easy and fast.
 
-You can try this live EXAMPLE in your browser. Check out [Särkower.de](https://särkower.de).
+You can try this live example in your browser. Check out [Särkower.de](https://särkower.de).
 
 We currently support and maintain [these examples](https://) (Särkower, ...), please feel free to contact me and get your business going.
 
