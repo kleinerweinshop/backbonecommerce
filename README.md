@@ -2,8 +2,8 @@
 
 ![NodeJS](https://img.shields.io/badge/NodeJS-brightgreen)
 ![MongoDB](https://img.shields.io/badge/MongoDB-brightgreen)
-![HTML](https://img.shields.io/badge/NodeJS-red)
-![CSS](https://img.shields.io/badge/MongoDB-red)
+![HTML](https://img.shields.io/badge/HTML-red)
+![CSS](https://img.shields.io/badge/CSS-red)
 ![Backbone](https://img.shields.io/badge/Backbone-yellow)
 ![Pug](https://img.shields.io/badge/pugjs-yellow)
 [![Discord](https://img.shields.io/discord/731065286404341770?label=Chat&style=social)](https://discord.gg/9zS5U2H)
