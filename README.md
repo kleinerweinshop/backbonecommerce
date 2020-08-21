@@ -66,5 +66,3 @@ and join our [Discord Channel](https://discord.gg/9zS5U2H)
 
 [![GitHub License](https://img.shields.io/github/license/addiinnocent/backbonecommerce)](https://github.com/addiinnocent/backbonecommerce/blob/master/LICENSE)
 
-GNU General Public License v3.0
-
