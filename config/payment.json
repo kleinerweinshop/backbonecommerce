@@ -1,7 +1,7 @@
 {
 	"currency": "eur",
-	"methods": ["card", "giropay"],
-	"stripe_publickey": "pk_test_51H1xlaJnYuv8nFzxMoYtaUmKRoaDyFiXtT9yCTvpz7hsq3CrGURSbFxATOLL5hcZFWDUmqB6TAbv8uNwuFVcv0Ug00IlQUzzus",
-	"stripe_secretkey": "sk_test_51H1xlaJnYuv8nFzxr4Ymh86TW9A2deGHukbg5AxWS2gSkvjHXoQM5lXZdTD73hPji0ao0stfeknz2bsX3DCSFQc900GgmHGnwZ",
-	"btc_sectretkey": "043779f9-b4d4-49e0-a4bd-9c6cc0be1fc9"
+	"stripe_methods": ["card", "giropay"],
+	"stripe_publickey": "",
+	"stripe_secretkey": "",
+	"btc_sectretkey": ""
 }

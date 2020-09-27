@@ -1,0 +1,13 @@
+{
+	"url": "https://kleinerweinshop.de",
+	"port": 80,
+	"safeport": 443,
+	"mongodb": "27017/data",
+	"ssl": false,
+	"sslkey": "",
+	"sslcert": "",
+	"template": "kleinerweinshop",
+	"dashboard_protect": "",
+	"dashboard_user": "admin",
+	"dashboard_pass": "aaa"
+}

@@ -4,7 +4,7 @@ this.pay = async (total, callback) => {
 	const paymentIntent = await stripe.paymentIntents.create({
 	  amount: total,
 	  currency: _Payment.currency,
-		payment_method_types: _Payment.methods,
+		payment_method_types: _Payment.stripe_methods,
 	  metadata: {
 			shippingcost: 'accept_a_payment',
 		},
