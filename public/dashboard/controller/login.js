@@ -15,6 +15,7 @@ var Login = Backbone.View.extend({
 	events: {
 		'change input': 'input',
 		'click button#send': 'send',
+		'keypress': 'enter',
 	},
 	input: function(e) {
 		this.model.set(e.target.name, e.target.value);
@@ -26,6 +27,11 @@ var Login = Backbone.View.extend({
 			dashboard = true;
 			Backbone.history.navigate('dashboard/index', true);
 		});
+	},
+	enter: function(e) {
+		if (e.keyCode != 13) return;
+		this.input(e);
+		this.send();
 	},
 	err: function() {
 		var err = this.el.querySelector('#err');

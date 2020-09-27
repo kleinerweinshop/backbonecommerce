@@ -41,9 +41,9 @@ this.getFull = (id, callback) => {
 	});
 }
 
-this.new = (User, shoppingcart, payment, callback) => {
+this.new = (user, shoppingcart, payment, callback) => {
 	var order = new Orders({
-		user: User.get('_id'),
+		user: user,
 		shoppingcart: shoppingcart,
 		payment: payment,
 	});
@@ -51,4 +51,11 @@ this.new = (User, shoppingcart, payment, callback) => {
 		if (err) return console.error(err);
 		return callback(entry);
 	});
+}
+
+this.count = (by, callback) => {
+	Orders.countDocuments(by, (err, amount) => {
+    if (err) return console.error(err);
+    return callback(amount);
+  });
 }

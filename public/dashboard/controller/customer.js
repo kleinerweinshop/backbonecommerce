@@ -22,12 +22,12 @@ var Customers = Backbone.View.extend({
 	getCustomers: function(callback) {
 		Socket.emit('d.customers.get');
 		Socket.once('d.customers.get', (data) => {
-			var customers = new Backbone.Collection;
+			var collection = new Backbone.Collection;
 			for (let entry of data) {
 				var model = new UserModel(entry);
-				customers.add(model);
+				collection.add(model);
 			}
-			return callback(customers);
+			return callback(collection);
 		});
 	},
 });
@@ -38,7 +38,6 @@ var Customer = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 		this.getOrders((orders) => {
-			console.log(this.el);
 			new ListView({
 				el: this.el.querySelector('#orders'),
 				collection: orders,

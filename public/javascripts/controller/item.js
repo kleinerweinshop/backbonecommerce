@@ -4,7 +4,6 @@ var Item = Backbone.View.extend({
 	initialize: function(options) {
 		_.extend(this, _.pick(options, '_id'));
 		this.getItem((item) => {
-			this.listenTo(User, 'change:shoppingcart', this.count);
 			this.model = item;
 			this.render();
 		});
@@ -16,20 +15,21 @@ var Item = Backbone.View.extend({
 		return this;
 	},
 	events: {
+		'click #back': () => Backbone.history.history.back(),
 		'click #navi': 'navi',
+		'click #tag': 'search',
 		'click button': 'tocart',
-		'mousemove .image': 'follow',
-		'mouseout .image': 'reset'
+		'mousemove .image': 'zoom',
+		'touchmove .image': 'zoom',
 	},
 	navi: function() {
 		var el = this.el.querySelector('.navi');
 		if (el.style.display == 'grid') return el.style.display = 'none';
 		else return el.style.display = 'grid';
 	},
-	count: function() {
-		var value = this.el.querySelector('#count').innerText;
-		return this.el.querySelector('#count').innerText = Number(value)+1;
-	},
+	search: function(e) {
+		Backbone.history.navigate('shop/'+e.target.innerText, true);
+  },
 	getItem: function(callback) {
 		Socket.emit('item.get', this._id);
 		Socket.once('item.get', (data) => {
@@ -38,21 +38,27 @@ var Item = Backbone.View.extend({
 		});
 	},
 	tocart: function(e) {
-    if (e.target.getAttribute('inactive') == 'true') return;
+    if (e.target.getAttribute('inactive') == 'true') return Backbone.history.navigate('shoppingcart', true);;
     e.target.setAttribute('inactive', true);
+		this.el.querySelector('#navi').className += 'pulse';
     Socket.emit('shoppingcart.add', this.model.get('_id'));
     User.set('shoppingcart', User.get('shoppingcart')+1);
   },
-	follow: function(e) {
-		var image = e.target;
-		var x = e.clientX-image.width;
-		var y = e.clientY-image.height;
-		if (x > image.width/4 || x < -image.width/4) return;
-		if (y > image.height/4 || y < -image.height/4) return;
-		image.style.transform = 'translateX('+x+'px)';
-		image.style.transform += 'translateY('+y+'px)';
+	zoom: function(e) {
+		var zoom = 4;
+		var img = this.el.querySelector('#image').firstChild;
+		var image = img.getBoundingClientRect();
+		var lens = this.el.querySelector('#lens');
+		var w = lens.offsetWidth / 2;
+  	var h = lens.offsetHeight / 2;
+		var x = e.clientX-image.left;
+		var y = e.clientY-image.top;
+		if (x < 0 || x > image.width) return;
+		if (y < 0 || y >image.height) return;
+		lens.style.transform = 'translateX('+(x-w)+'px)';
+		lens.style.transform += 'translateY('+(y-h)+'px)';
+		lens.style.backgroundImage = 'url('+img.src+')';
+		lens.style.backgroundSize = (image.width*zoom)+'px '+(image.height*zoom)+'px';
+		lens.style.backgroundPosition = '-'+((x*zoom)-w)+'px -'+((y*zoom)-h)+'px';
 	},
-	reset: function(e) {
-		e.target.style.transform = '';
-	}
 });

@@ -23,12 +23,12 @@ var Items = Backbone.View.extend({
 	getItems: function(callback) {
 		Socket.emit('d.items.get');
 		Socket.once('d.items.get', (data) => {
-			var items = new Backbone.Collection;
+			var collection = new Backbone.Collection;
 			for (let entry of data) {
 				var model = new ItemModel(entry);
-				items.add(model);
+				collection.add(model);
 			}
-			return callback(items);
+			return callback(collection);
 		});
 	},
 	new: function() {
@@ -47,12 +47,17 @@ var Item = Backbone.View.extend({
 	id: 'item',
 	template: _.template(document.getElementById('item-template').innerHTML),
 	initialize: function() {
-		this.render();
+		this.getCategories((categories) => {
+			this.render(categories);
+		});
 		return this;
 	},
-	render: function() {
+	render: function(categories) {
 		this.el.innerHTML = '';
-		this.el.innerHTML = this.template(this.model.attributes);
+		this.el.innerHTML = this.template({
+			categories: categories,
+			item: this.model.attributes,
+		});
 		this.el.querySelector('#toitems').setAttribute('active', true);
 		Backbone.history.navigate('dashboard/item', false);
 		return this;
@@ -60,8 +65,9 @@ var Item = Backbone.View.extend({
 	events: {
 		'change input#image': 'image',
 		'change input#input': 'input',
+		'change select#input': 'input',
 		'change textarea#input': 'input',
-		'change input#attr': 'attr',
+		'change input#tags': 'tags',
 		'click button#send': 'send',
 		'click button#remove': 'delete',
 	},
@@ -70,17 +76,21 @@ var Item = Backbone.View.extend({
 		var file = e.target.files[0];
 		fReader.readAsDataURL(file);
 		fReader.onload = (event) => {
+			this.el.querySelector('#image').src = event.target.result;
 			this.model.set('image', event.target.result);
 		}
 	},
 	input: function(e) {
 		this.model.set(e.target.name, e.target.value);
 	},
-	attr: function(e) {
-		var all = Array.prototype.slice.call(this.el.querySelectorAll('#attr'));
-		var array = this.model.get('attributes');
-		array[all.indexOf(e.target)] = e.target.value;
-		this.model.set('attributes', array);
+	tags: function(e) {
+		var array = e.target.value.split(',');
+		var result = new Array;
+		_.each(array, (tag) => {
+			if (tag.charCodeAt(0) == 32) tag = tag.substring(1);
+			result.push(tag);
+		});
+		this.model.set('tags', result);
 	},
 	send: function() {
 		Socket.emit('d.item.change', this.model.attributes);
@@ -92,5 +102,11 @@ var Item = Backbone.View.extend({
 		Socket.emit('d.item.remove', this.model.get('_id'));
 		var site = new Items();
 		new Site().el.append(site.el);
-	}
+	},
+	getCategories: function(callback) {
+		Socket.emit('d.categories.get');
+		Socket.once('d.categories.get', (categories) => {
+			return callback(categories);
+		});
+	},
 });

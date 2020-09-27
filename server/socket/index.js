@@ -1,18 +1,43 @@
+var ObjectID = require('mongodb').ObjectID;
 var Users = require('./user');
 var Items = require('./item');
 var Shoppingcart = require('./shoppingcart');
 var Orders = require('./order');
+var Shipping = require('./shipping');
+var Categories = require('./category');
 var Stripe = require('./stripe');
+var Btc = require('./btc');
 
 module.exports = (io) => {
 	io.on('connection', function (socket) {
-		_Traffic++;
+		var User;
+		socket.on('dashboard', (data) => {
+			if (!Users.dashboard(data)) return socket.emit('dashboard', false);
+			require('./dashboard')(socket);
+			return socket.emit('dashboard', true);
+		});
+		//-----Categories-----//
+		socket.on('categories.get', () => {
+			Categories.get({}, (data) => {
+				socket.emit('categories.get', data);
+			});
+		});
+		//-----Items-----//
+		socket.on('items.get', (data) => {
+			var skip = 0;
+			Items.get(data, skip, (data) => {
+				socket.emit('items.get', data);
+			});
+		});
+		socket.on('item.get', (id) => {
+			Items.getOne(id, (data) => {
+				socket.emit('item.get', data);
+			});
+		});
 		socket.once('session', (data) => {
 			Users.session(data, (User) => {
-				socket.on('dashboard', (data) => {
-					if (!Users.dashboard(data)) return socket.emit('dashboard', false);
-					require('./dashboard')(socket);
-					return socket.emit('dashboard', true);
+				socket.on('void', () => {
+					socket.emit('void');
 				});
 				//-----User-----//
 				User.set('socket', socket.id);
@@ -22,22 +47,10 @@ module.exports = (io) => {
 					User.set(key, data[key]);
 					User.save();
 				});
-				//-----Items-----//
-				socket.on('items.get', () => {
-					Items.get({amount:{$gt: 0}}, (data) => {
-						socket.emit('items.get', data);
-					});
-				});
-				socket.on('item.get', (id) => {
-					Items.get({_id: id}, (data) => {
-						socket.emit('item.get', data[0]);
-					});
-				});
 				//-----Shoppingcart-----//
-				socket.on('shoppingcart.get', (id) => {
+				socket.on('shoppingcart.get', () => {
 					Shoppingcart.get({
 						user: User.get('_id'),
-						finished: false,
 					}, (data) => {
 						socket.emit('shoppingcart.get', data);
 					});
@@ -55,37 +68,56 @@ module.exports = (io) => {
 						entry[0].save();
 					});
 				});
+				//-----Shipping-----//
+				socket.on('shipping.get', (data) => {
+					Shipping.get({maxweight: {$gte: data}}, (shipping) => {
+						socket.emit('shipping.get', shipping[0]);
+					});
+				});
 				//-----Payment-----//
 				var Payment;
 				socket.on('payment.stripe', () => {
 					Shoppingcart.get({
 						user: User.get('_id'),
-						finished: false,
 					}, (shoppingcart) => {
-						Stripe.pay(shoppingcart, (payment) => {
-							Payment = payment;
-							socket.emit('payment.stripe', {
-								publishableKey: _Config.stripe_publickey,
-								clientSecret: Payment.client_secret
+						Shipping.calculate(shoppingcart, (total) => {
+							Stripe.pay(total, (payment) => {
+								Payment = payment;
+								socket.emit('payment.stripe', {
+									publishableKey: _Payment.stripe_publickey,
+									clientSecret: Payment.client_secret
+								});
 							});
 						});
 					});
 				});
 				socket.on('payment.submit', (data) => {
-					if (!Payment) return;
-					if (data) Payment = data;
+					if (!data) return;
+					var Payment = data;
 					Stripe.validate(Payment.id, (err) => {
 						if (err) return console.error(err);
-						Shoppingcart.get({
-							user: User.get('_id'),
-							finished: false,
-						}, (shoppingcart) => {
-							Orders.new(User, shoppingcart, Payment.id, (Order) => {
-								Shoppingcart.empty(User, shoppingcart);
+						Orders.new(User.get('_id'), Payment.id, (Order) => {
+							Orders.mail(User, Order);
+							Shoppingcart.empty(User);
+							User.set('orders', User.get('orders')+1);
+						});
+					});
+				});
+				socket.on('payment.btc', () => {
+					Shoppingcart.get({
+						user: User.get('_id'),
+						finished: false,
+					}, (shoppingcart) => {
+						Shipping.calculate(shoppingcart, (total) => {
+							if (total <= 0) return;
+							Btc.pay(User, total, (payment) => {
+								Payment = payment;
+								socket.emit('payment.btc', payment);
 							});
 						});
 					});
 				});
+
 			});
 		});
 	});

@@ -1,10 +1,4 @@
 script(type='text/template', id='model-user-template')
-  span.center
-    <%if(selected == true){%>
-    input(type='checkbox' checked)
-    <%}else{%>
-    input(type='checkbox')
-    <%}%>
   div.column
     ul <%-firstname%> <%-lastname%>
     ul <%-email%>
@@ -13,3 +7,9 @@ script(type='text/template', id='model-user-template')
     ul <%-zip%> <%-town%>
     ul <%-country%>
   ul <%-orders%>
+  span.center
+    <%if(selected == true){%>
+    input(type='checkbox' checked)
+    <%}else{%>
+    input(type='checkbox')
+    <%}%>

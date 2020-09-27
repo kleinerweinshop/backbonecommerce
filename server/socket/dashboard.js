@@ -2,7 +2,10 @@ var Users = require('./user');
 var Items = require('./item');
 var Shoppingcart = require('./shoppingcart');
 var Orders = require('./order');
+var Shippings = require('./shipping');
+var Categories = require('./category');
 var Stripe = require('./stripe');
+var Btc = require('./btc');
 
 module.exports = (socket) => {
 	//-----Graph-----//
@@ -16,9 +19,27 @@ module.exports = (socket) => {
 			socket.emit('d.graph.orders', data);
 		});
 	});
+	//-----Categories-----//
+	socket.on('d.categories.get', () => {
+		Categories.get({}, (data) => {
+			socket.emit('d.categories.get', data);
+		});
+	});
+	socket.on('d.categories.new', () => {
+		Categories.new((Category) => {
+			socket.emit('d.categories.new', Category);
+		});
+	});
+	socket.on('d.category.change', (data) => {
+		Categories.update(data._id, data, (Category) => {});
+	});
+	socket.on('d.category.remove', (id) => {
+		Categories.remove(id, (Category) => {});
+	});
 	//-----Items-----//
 	socket.on('d.items.get', () => {
-		Items.get({}, (data) => {
+		var skip = 0;
+		Items.getAll({}, skip, (data) => {
 			socket.emit('d.items.get', data);
 		});
 	});
@@ -63,5 +84,22 @@ module.exports = (socket) => {
 		Orders.get({user: id}, (orders) => {
 			socket.emit('d.customer.orders', orders)
 		});
+	});
+	//-----Shippings-----//
+	socket.on('d.shippings.get', () => {
+		Shippings.get({}, (data) => {
+			socket.emit('d.shippings.get', data);
+		});
+	});
+	socket.on('d.shippings.new', () => {
+		Shippings.new((Shipping) => {
+			socket.emit('d.shippings.new', Shipping);
+		});
+	});
+	socket.on('d.shipping.change', (data) => {
+		Shippings.update(data._id, data, (Shipping) => {});
+	});
+	socket.on('d.shipping.remove', (id) => {
+		Shippings.remove(id, (Shipping) => {});
 	});
 };

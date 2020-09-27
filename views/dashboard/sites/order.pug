@@ -28,7 +28,7 @@ script(type='text/template', id='order-template')
         hr
         div.double
           p Gesamt:
-          p <%-value%>€
+          p <%-value.toFixed(2)%>€
       <%if (checked == false){%>
       button.green#check Check
       <%}else{%>

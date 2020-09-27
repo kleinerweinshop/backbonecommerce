@@ -1,0 +1,56 @@
+style(type='text/css').
+  body {
+  	margin: 0;
+  	font-family: 'Roboto', sans-serif;
+  	display: grid;
+  	margin: 0;
+  	font-size: 16px;
+  	color: #222;
+  	background: #fff;
+  }
+  button {
+  	width: 200px;
+  	height: 50px;
+  	margin: auto;
+  	background: #5e1224;
+  	color: #fff;
+  	font-size: 16px;
+  	cursor: pointer;
+  	border: 1px solid #ccc;
+  	border-radius: 2px;
+  }
+  button:hover {
+  	box-shadow: inset 120px 120px rgba(255, 255, 255, 0.2);
+  }
+  a {
+    text-decoration: none;
+  }
+  img {
+  	width: 100%;
+  }
+  .grid {
+    display: grid;
+    width: 350px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  #logo {
+  	display: grid;
+  	width: 80px;
+  }
+
+block content
+  body
+    div(class='grid')
+      img(id='logo' src=logo)
+      div
+        h2 Bestellung mit der ID #{order}
+        p Ihre Bestellung wird vom Wine Dude bearbeitet.
+        p Es kann 3-4 Werktage dauern bis Ihre Bestellung bei Ihnen zu Hause eintrifft.
+        br
+        h3 Lieferadresse:
+        p #{lastname}, #{firstname}
+        p #{street}
+        p #{zip}, #{city}
+        p #{country}

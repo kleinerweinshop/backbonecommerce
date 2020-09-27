@@ -22,12 +22,12 @@ var Orders = Backbone.View.extend({
 	getOrders: function(callback) {
 		Socket.emit('d.orders.get');
 		Socket.once('d.orders.get', (data) => {
-			var orders = new Backbone.Collection;
+			var collection = new Backbone.Collection;
 			for (let entry of data) {
 				var model = new OrderModel(entry);
-				orders.add(model);
+				collection.add(model);
 			}
-			return callback(orders);
+			return callback(collection);
 		});
 	},
 });

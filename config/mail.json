@@ -1,0 +1,13 @@
+{
+	"sendmail": true,
+	"from": "mail@winedu.de",
+	"data": {
+		"host": "smtp.sendgrid.net",
+		"port": 587,
+		"secure": false,
+		"auth": {
+			"user": "apikey",
+			"pass": "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"
+		}
+	}
+}

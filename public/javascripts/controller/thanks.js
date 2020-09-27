@@ -4,8 +4,16 @@ var clientSecret = url.searchParams.get('payment_intent_client_secret');
 var Thanks = Backbone.View.extend({
 	id: 'thanks',
 	initialize: function() {
-		this.stripe();
+		this.void(() => {
+			if (clientSecret) this.stripe();
+			else this.proceed();
+		});
 		return this;
+	},
+	proceed: function() {
+		User.set('shoppingcart', 0);
+		Backbone.history.navigate('', true);
+		alert('Vielen Dank für Ihren Einkauf!');
 	},
 	stripe: function() {
 		var script = document.createElement('script');
@@ -20,11 +28,15 @@ var Thanks = Backbone.View.extend({
 					alert('Ihre Zahlung wurde nicht angenommen!');
 			  } else if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
 			    Socket.emit('payment.submit', response.paymentIntent);
-					User.set('shoppingcart', 0);
-					Backbone.history.navigate('', true);
-					alert('Vielen Dank für Ihren Einkauf!');
+					this.proceed();
 			  }
 			});
+		});
+	},
+	void: function(callback) {
+		Socket.emit('void');
+		Socket.once('void', () => {
+			return callback();
 		});
 	},
 });

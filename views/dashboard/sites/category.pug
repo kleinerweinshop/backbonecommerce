@@ -1,0 +1,35 @@
+script(type='text/template', id='categories-template')
+  include ../models/sidebar.pug
+  div.content
+    div#top
+      div.items
+        span Name
+        span Order
+        span Description
+        span Items
+    div#categories
+    a#new new Category
+    
+
+script(type='text/template', id='category-template')
+  include ../models/sidebar.pug
+  div.content
+    div#form
+      div.input
+        <%if (image) {%>
+        img#image(src!='<%-image%>')
+        <%}%>
+        input#image(name='image' type='file')
+      div.input
+        label Name
+        input#input(name='name' value!='<%-name%>')
+      div.input
+        label Order
+        input#input(name='order' type='number' value!='<%-order%>')
+      div.input
+        label Description
+        textarea#input(name='desc' value!='<%-desc%>') <%-desc%>
+      div.double
+        button.red#remove Remove
+        button#send Save
+  

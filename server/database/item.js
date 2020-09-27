@@ -1,8 +1,12 @@
 var mongoose = require('mongoose');
 var Items = mongoose.model('Items');
 
-this.get = (by, callback) => {
+this.get = (by, skip, callback) => {
 	Items.find(by).
+	sort('-amount').
+	populate('category').
+	skip(skip).
+	limit(10).
 	exec((err, result) => {
 		if (err) return console.error(err);
 		return callback(result);
@@ -29,4 +33,11 @@ this.remove = (id, callback) => {
 	then((result) => {
 		return callback(result);
 	});
+}
+
+this.count = (by, callback) => {
+	Items.countDocuments(by, (err, amount) => {
+    if (err) return console.error(err);
+    return callback(amount);
+  });
 }

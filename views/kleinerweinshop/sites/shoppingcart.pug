@@ -1,0 +1,26 @@
+script(type='text/template', id='shoppingcart-template')
+  div#header
+    div#logo
+      img(src='/images/logo.png')
+    div#navi
+      i(class='fa fa-bars')
+    div.navi
+      a#toindex
+        span Startseite
+      a#toshop
+        span Einkaufen
+      a#toinfo
+        span Steckbrief
+  div.content
+    i#back(class='fa fa-back')
+    h2 Warenkorb
+    div.items
+      span Name
+      span
+      span Preis
+    div#items(important)
+    div.item#total
+      span Zwischensumme
+      span#totalprice(important)
+    button#next Zur Kasse
+  include ../models/footer.pug

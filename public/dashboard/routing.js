@@ -2,11 +2,15 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'dashboard/': 'login',
 		'dashboard/index': 'index',
+		'dashboard/categories': 'categories',
+		'dashboard/category': 'categories',
 		'dashboard/items': 'items',
 		'dashboard/item': 'items',
 		'dashboard/orders': 'orders',
 		'dashboard/order': 'orders',
 		'dashboard/customers': 'customers',
+		'dashboard/shippings': 'shippings',
+		'dashboard/shipping': 'shippings',
 	},
 	login: () => {
 		var site = new Login();
@@ -15,6 +19,11 @@ var Router = Backbone.Router.extend({
 	index: () => {
 		if (dashboard != true) return Backbone.history.navigate('dashboard/', true);
 		var site = new Index();
+		new Site().el.append(site.el);
+	},
+	categories: () => {
+		if (dashboard != true) return Backbone.history.navigate('dashboard/', true);
+		var site = new Categories();
 		new Site().el.append(site.el);
 	},
 	items: () => {
@@ -30,6 +39,11 @@ var Router = Backbone.Router.extend({
 	customers: () => {
 		if (dashboard != true) return Backbone.history.navigate('dashboard/', true);
 		var site = new Customers();
+		new Site().el.append(site.el);
+	},
+	shippings: () => {
+		if (dashboard != true) return Backbone.history.navigate('dashboard/', true);
+		var site = new Shippings();
 		new Site().el.append(site.el);
 	},
 });

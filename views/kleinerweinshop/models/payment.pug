@@ -1,0 +1,26 @@
+script(type='text/template', id='model-creditcard-template')
+  h3 Bezahlen mit Kreditkarte
+  form#payment-form
+    div#card-element.column
+    div#card-errors(role='alert')
+    div.content
+      button#creditcard Bezahlen
+
+script(type='text/template', id='model-sepa-template')
+  h3 Bezahlen per SEPA Lastschrift
+  p SEPA Lastchrift is zur Zeit nicht verfügbar. Bitte benutzen Sie GiroPay stattdessen!
+  //div#iban-element
+  //div#error-message(role='alert')
+  //div.content
+    button#sepa Bezahlen
+
+script(type='text/template', id='model-giropay-template')
+  div.content
+    img#giropay(src='/images/giropay.png')
+
+script(type='text/template', id='model-bitcoin-template')
+  h3 Bezahlen mit Bitcoin
+  p Bitcoin Zahlungen werden über den Zahlungsdienstleister Coinbase abgewickelt.
+  div.content
+    a#crypto(class='pay-with-crypto' target='_blank')
+      button#btc Bezahlen

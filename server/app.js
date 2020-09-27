@@ -1,6 +1,8 @@
-_Config = require('../config.json');
-_Traffic = 0;
+_Config = require('../config/config.json');
+_Payment = require('../config/payment.json');
+_Mail = require('../config/mail.json');
 
+process.stdout.write('starting...');
 const fs = require('fs');
 const express = require('express');
 const parser = require('body-parser');
@@ -11,6 +13,7 @@ const https = require('https');
 const path = require('path');
 const mongoose = require('mongoose');
 const socketio = require('socket.io');
+const cronjob = require('cron').CronJob;
 
 const database = require('./database/db');
 const routes = require('./routing');
@@ -20,7 +23,6 @@ const sockets = require('./socket');
 
 var app = express();
 // all environments
-process.stdout.write('pending...');
 app.set('port', process.env.PORT || _Config.port);
 app.set('safeport', process.env.PORT || _Config.safeport);
 app.set('views', path.join(__dirname, '..', 'views'));
@@ -45,7 +47,7 @@ mongoose.connect('mongodb://localhost:'+_Config.mongodb, options);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-	process.stdout.write("\r\x1b[K");
+	process.stdout.write('\r\x1b[K');
 	var key, cert;
 	if (_Config.sslkey) key = fs.readFileSync(_Config.sslkey);
 	if (_Config.sslcert) cert = fs.readFileSync(_Config.sslcert)
@@ -56,10 +58,11 @@ db.once('open', () => {
 	var httpServer = http.createServer(app);
 	var httpsServer = https.createServer(options, app);
 	httpServer.listen(app.get('port'), () => {
-		console.log('Server listening on port '+app.get('port'));
+		process.stdout.write('\nHTTP Server started on port '+app.get('port'));
 	});
 	httpsServer.listen(app.get('safeport'), () => {
-		console.log('Server listening on safe port '+app.get('safeport'));
+		process.stdout.write('\nHTTPS Server started on port '+app.get('safeport'));
+		process.stdout.write('\nCurrent Template: "'+_Config.template+'"\n');
 	});
 	var	io;
 	if (_Config.ssl == true) io = socketio(httpsServer);
@@ -67,3 +70,8 @@ db.once('open', () => {
 	sockets(io);
 	cli();
 });
+
+new cronjob('*/10 * * * * *', () => { // 0 */12 * * *
+	require('./socket/stripe.js').update();
+	require('./socket/btc.js').update();
+}).start();

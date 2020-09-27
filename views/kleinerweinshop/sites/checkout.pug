@@ -1,0 +1,58 @@
+script(type='text/template', id='checkout-template')
+  div#header
+    div#logo
+      img(src='/images/logo.png')
+    div#navi
+      i(class='fa fa-bars')
+    div.navi
+      a#toindex
+        span Startseite
+      a#toshop
+        span Einkaufen
+      a#toinfo
+        span Steckbrief
+      a#tocart
+        span Warenkorb 
+          span#count (<%-User.get('shoppingcart').length%>)
+  div.content
+    i#back(class='fa fa-back')
+    h2 Kasse
+    div.third
+      div.box
+        h3 Lieferanschrift
+        div.column
+          span <%-user.lastname%>, <%-user.firstname%>
+          span <%-user.street%>
+          span <%-user.zip%> <%-user.town%>
+          span <%-user.country%>
+          a#toshipping Adresse ändern
+      div.box
+        h3 Zusammenfassung
+        div.double
+          div
+            h3 Versand
+            div.double
+              p <%-shipping.type%>
+              p <%-shipping.price%> €
+            p 2-3 Werktage Lieferzeit
+          div
+            h3 Einkauf
+            div.triple
+              <%_.each(shoppingcart.models, (item) => {%>
+              span <%-item.get('amount')%>x
+              span <%-item.get('item').name%>
+              span <%-(item.get('amount')*item.get('item').price).toFixed(2)%> €
+              <%})%>
+            hr
+            div.triple
+              span Gesamt
+              span
+              span <%-shoppingcart.total(shipping.price)%> €
+      div.box#methods
+        h3 Bezahlmethoden
+        span.creditcard(active) Kreditkarte
+        span.sepa SEPA Lastschrift
+        span.giropay GiroPay
+        span.btc Bitcoin
+      div.box#payment(important)
+  include ../models/footer.pug

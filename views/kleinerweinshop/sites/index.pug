@@ -1,0 +1,40 @@
+script(type='text/template', id='index-template')
+  div#header
+    div#logo
+      img(src='/images/logo.png')
+    div#navi
+      i(class='fa fa-bars')
+    div.navi
+      a#toshop
+        span Einkaufen
+      a#toinfo
+        span Steckbrief
+      a#tocart
+        span Warenkorb 
+          span#count (<%-User.get('shoppingcart').length%>)
+  video#video.big(muted autoplay loop)
+  img#video.small
+  div.content
+    button#toshop zum Shop
+  div.content
+    h2 Herzlich Willkommen im kleinen Wein Shop.
+    div.box
+      h3 Vorwort
+      span
+        p Ich biete in meinem Shop nur ausgewählte Weine an. Jede Sorte wurde von mir auf Geschmack und Qualität getestet.
+        p Für jeden meiner Weine habe ich einen Erfahrungsbericht verfasst, der auf der Seite des jeweiligen Weins angesehen werden kann.
+        p Die einzelnen Winzer kenne ich persönlich und ich bürge für die Qualität ihrer Weine!
+      div.triple
+        img(src='/images/img1.jpg')
+        img(src='/images/img2.jpg')
+        img(src='/images/img3.jpg')
+      span
+        p Neben Qualität ist auch Nachhaltigkeit für mich sehr wichtig. Meine Weine werden möglichst umweltschonend hergestellt, verpackt und zu dir nach Hause geliefert.
+  div.content
+    button#toinfo mehr lesen
+  div.content
+    h2 Hier eine Auswahl meiner persönlichen Favoriten:
+    div#items(important)
+  div.center
+    a#more mehr anzeigen
+  include ../models/footer.pug

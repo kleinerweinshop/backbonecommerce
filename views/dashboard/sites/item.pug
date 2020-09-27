@@ -4,10 +4,11 @@ script(type='text/template', id='items-template')
     div#top
       div.items
         span Name
-        span Info
+        span Category
         span Price
+        span In stock
     div#items
-    a#new New Item
+    a#new new Item
     
 
 script(type='text/template', id='item-template')
@@ -15,29 +16,45 @@ script(type='text/template', id='item-template')
   div.content
     div#form
       div.input
-        label Image
+        <%if (item.image) {%>
+        img#image(src!='<%-item.image%>')
+        <%}%>
         input#image(name='image' type='file')
       div.input
         label Name
-        input#input(name='name' value!='<%-name%>')
+        input#input(name='name' value!='<%-item.name%>')
       div.input
-        label Info 1
-        input#attr(name='attributes' value!='<%-attributes[0]%>')
+        label Category
+        select#input(name='category' value!='<%-item.category%>')
+          option(value='') None
+          <%for (let category of categories) {%>
+            <%if (item.category && item.category._id == category._id) {%>
+            option(value!='<%-category._id%>' selected) <%-category.name%>
+            <%} else{%>
+            option(value!='<%-category._id%>') <%-category.name%>
+            <%}%>
+          <%}%>
       div.input
-        label Info 2
-        input#attr(name='attributes' value!='<%-attributes[1]%>')
-      div.input
-        label Info 3
-        input#attr(name='attributes' value!='<%-attributes[2]%>')
+        label Tags (seperate with ,)
+        input#tags(name='tags' value!='<%-item.tags%>')
       div.input
         label Text
-        textarea#input(name='info' value!='<%-info%>') <%-info%>
+        textarea#input(name='info' value!='<%-item.info%>') <%-item.info%>
       div.input
         label Price
-        input#input(name='price' type='number' value!='<%-price%>')
+        input#input(name='price' type='number' value!='<%-item.price%>')
       div.input
         label In stock
-        input#input(name='amount' type='number' value!='<%-amount%>')
+        input#input(name='amount' type='number' value!='<%-item.amount%>')
+      div.input
+        label Weight (gram)
+        input#input(name='weight' type='number' value!='<%-item.weight%>')
+      div.input
+        label Milliliters (ml), for Wine etc.
+        input#input(name='liter' type='number' value!='<%-item.liter%>')
+      div.input
+        label Shipping
+        input#input(name='shipping' type='number' value!='<%-item.shipping%>')
       div.double
         button.red#remove Remove
         button#send Save

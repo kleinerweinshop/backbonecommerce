@@ -1,0 +1,44 @@
+script(type='text/template', id='info-template')
+  div#header
+    div#logo
+      img(src='/images/logo.png')
+    div#navi
+      i(class='fa fa-bars')
+    div.navi
+      a#toindex
+        span Startseite
+      a#toshop
+        span Einkaufen
+      a#tocart
+        span Warenkorb 
+          span#count (<%-User.get('shoppingcart').length%>)
+  div.content
+    i#back(class='fa fa-back')
+    div.box
+      span
+        h3 Große Lagen. Große Leidenschaft. Große Tradition.
+        h2 Weingut Würtzberg
+        p Das Weingut Würtzberg bewirtschaftet im Alleinbesitz mit dem Serriger Herrenberg und Serriger Würtzberg zwei der spektakulärsten Großen Lagen des Anbaugebietes, die von dem Ufer der Saar bis an die Ausläufer des Hunsrücks reichen. Serrig gehört zum Anbaugebiet Mosel.
+        p Der Jungwinzer Felix Heimes hat im Jahr 2018 nach dem Bachelorabschluss (Hochschule Geisenheim University) in Weinbau und Oenologie mit großem Elan und Unternehmungslust die Verantwortung für das Weingut übernommen. Felix führt die große Tradition und neue Ideen mit Leidenschaft zusammen.
+        p Weinbau in den Steilstlagen der Saar ist weitgehend Handarbeit. Felix Heimes reduziert mit äußerster Konsequenz die Ertragsmenge. Alle Trauben werden von Hand gelesen und auf dem Sortiertisch einer strengen Selektion unterzogen. Felix und Kellermeister Franz Lenz vergären grundsätzlich die Weine spontan. Die Weine werden lange auf der Hefe im großen Holzfass oder Edelstahltank gelagert und erst spät abgefüllt.
+        p Neben Events wie SaarRieslingSommer, Hoffest und Weihnachtsmarkt bieten wir für Privatgruppen, Vereine und Firmen nicht nur Weinproben mit Kellerführungen durch den doppelgeschossigen Gewölbekeller an sondern Dank der arrondierten Lage auch Weinbergsführungen, die nicht nur einen herrlichen Blick auf die Saar und die Serriger Staustufe bieten sondern auch eine Idee davon liefern was es bedeutet diese Hänge von Hand zu bearbeiten. Den aktuellen Event-Kalender finden Sie hier auf unserer Würtzberg-Webseite.
+        p Sie suchen eine Übernachtungsmöglichkeit an der Saar? Wir haben was für Sie: Die großzügige Ferienwohnung mit Blick auf die Parkanlagen und auf eines der kostbarsten Denkmäler der deutschen Romantik, die Klause von Kastel, auch als Serriger Klause bekannt, befindet sich auf dem Würtzberg in Serrig und wird bis heute ausschließlich mit einem traditionellen Kaminofen beheizt.
+      div.triple
+        img(src='/images/wuertzberg1.jpg')
+        img(src='/images/wuertzberg2.jpg')
+        img(src='/images/wuertzberg3.jpg')
+    div.box
+      span
+        h3 Weinmacher mit Persönlichkeit
+        h2 Die Weinmacher
+        p Wir Weinmacher aus Niederkirchen sind Winzer mit bewährtem Können, innovativen Ideen und technischem Know how. Unsere Weine bauen wir nach modernsten Erkenntnissen aus. Das hat Tradition. Seit mehr als einem Jahrhundert ist es unsere Aufgabe, beste Weine in der Mittelhaardt anzubauen. Mit großer Leidenschaft pflegen wir unsere Weinberge und veredeln die Ernte mit viel Liebe zu unseren bekannten Qualitätsweinen.
+        p Als größte eigenständige Genossenschaft der Pfalz (im Unternehmensverbund Deutsches Weintor eG) sind wir uns der Vorteile unseres Terroirs und der über 100-jährigen Geschichte unserer Weintradition bewusst.
+        p Gleichzeitig beschreitet „Die Weinmacher GmbH” erfolgreich neue Wege. Beispielsweise mit den Premium Linien „Charactere” und „!Vin – Top of wine”. Exportorientierte Kontakte bestehen in die USA, seit 2008 auch nach Fernost. „Innovation und Persönlichkeit stehen bei uns an erster Stelle”. „Wir möchten unseren Kunden das Gefühl geben, dass bei den Weinmachern immer noch der persönliche Kontakt, das anregende Miteinander im Vordergrund stehen. Jeder Gast soll sich gut beraten fühlen.”
+        p Aus der 1901 gegründeten Genossenschaft ist in über einem Jahrhundert ein mittelständisches Unternehmen und die größte eigenständige Winzergenossenschaft der Pfalz geworden (heute im Genossenschaftsverbund Deutsches Weintor eG).
+        p Maßgeblich zum Erfolg hat natürlich unsere Philosophie beigetragen: Wir setzen konsequent auf Qualität. Die Ernte unserer Winzer bauen wir traditionell und individuell sowie nach modernsten technischen Erkenntnissen aus. Beispielsweise werden unsere Riesling-Weine bereits seit dem Jahr 1984 temperaturkontrolliert vergoren, dadurch erhalten sie ihre besonders vielfältige Aromatik. Unsere Weinstile entsprechen dem Geschmack der Weinliebhaber und bestehen deshalb erfolgreich auf dem Markt.
+      div.triple
+        img(src='/images/weinmacher1.jpg')
+        img(src='/images/weinmacher2.jpg')
+        img(src='/images/weinmacher3.jpg')
+  include ../models/footer.pug
+  

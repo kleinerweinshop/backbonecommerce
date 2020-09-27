@@ -1,0 +1,74 @@
+@media all and (max-width: 720px) {
+	h2, h3 {
+		overflow: hidden;
+	}
+	input {
+		width: 1fr;
+		padding-right: 0;
+	}
+	.third {
+		grid-template-columns: 1fr;
+	}
+	.double, .triple {
+		grid-template-columns: 1fr;
+	}
+	.footer {
+		grid-template-columns: 1fr;
+		grid-template-rows: 100px 250px 100px;
+		text-align: center;
+	}
+	.bar {
+		grid-template-columns: 1fr;
+	}
+	#video.big {
+		display: none;
+	}
+	#video.small {
+		height: 100vh;
+		display: grid;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-image: url('/images/imgphone.jpg');
+	}
+	#index .map {
+		grid-template-columns: 1fr;
+	}
+	#index .map:nth-child(even) {
+		grid-template-columns: 1fr
+	}
+	.item img {
+		max-width: 100%;
+		height: auto;
+	}
+	.box img:hover {
+		transform: none;
+	}
+	#search {
+		padding-right: 0;
+	}
+	#showcase {
+		grid-template-columns: 1fr;
+	}
+	#shoppingcart .items {
+		grid-template-columns: 0 1fr 0 90px;
+	}
+	#shoppingcart .item {
+		grid-template-columns: 1fr 30px 30px 30px;
+	}
+	#shoppingcart .item img {
+		display: none;
+	}
+	#shoppingcart .item #tags {
+		display: none;
+	}
+	#shoppingcart .item#total {
+		grid-template-columns: 0 1fr 1fr;
+	}
+}
+
+@media all and (max-width: 1000px) {
+	#shop #items, #index #items {
+		grid-template-columns: 1fr;
+		margin: 0;
+	}
+}

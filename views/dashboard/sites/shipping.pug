@@ -1,0 +1,39 @@
+script(type='text/template', id='shippings-template')
+  include ../models/sidebar.pug
+  div.content
+    div#top
+      div.items
+        span Type
+        span Max Weight
+        span Volume
+        span Price
+    div#shippings
+    a#new new shipping Template
+    
+
+script(type='text/template', id='shipping-template')
+  include ../models/sidebar.pug
+  div.content
+    div#form
+      div.input
+        label Type
+        input#input(name='type' value!='<%-type%>')
+      div.input
+        label Max Weight (gram)
+        input#input(name='maxweight' type='number' value!='<%-maxweight%>')
+      div.input
+        label Max Length (cm)
+        input#input(name='maxweight' type='number' value!='<%-maxlength%>')
+      div.input
+        label Max Width (cm)
+        input#input(name='maxwidth' type='number' value!='<%-maxwidth%>')
+      div.input
+        label Max Height (cm)
+        input#input(name='maxheight' type='number' value!='<%-maxheight%>')
+      div.input
+        label Price
+        input#input(name='price' type='number' value!='<%-price%>')
+      div.double
+        button.red#remove Remove
+        button#send Save
+  

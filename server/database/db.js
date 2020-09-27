@@ -9,7 +9,6 @@ var UserSchema = new Schema({
 	town: String,
 	zip: String,
 	country: {type: String, default: 'Germany'},
-	shoppingcart: {type: Number, default: 0},
 	orders: {type: Number, default: 0},
 	selected: {type: Boolean, default: false},
 	session: {type: String, default: ''},
@@ -22,13 +21,26 @@ mongoose.model('Users', UserSchema);
 
 var ItemSchema = new Schema({
 	name: String,
+	category: {type: Schema.Types.ObjectId, ref: 'Categories', default: null},
 	image: String,
 	info: String,
-	attributes: Array,
+	tags: Array,
 	price: Number,
+	liter: {type: Number, default: 0},
 	amount: {type: Number, default: 0},
+	weight: {type: Number, default: 0},
+	shipping: {type: Number, default: 0},
 });
 mongoose.model('Items', ItemSchema);
+
+var CategorySchema = new Schema({
+	name: String,
+	image: String,
+	order: Number,
+	desc: String,
+	amount: Number,
+});
+mongoose.model('Categories', CategorySchema);
 
 var ShoppingcartSchema = new Schema({
 	user: {type: Schema.Types.ObjectId, ref: 'Users'},
@@ -49,6 +61,16 @@ var OrderSchema = new Schema({
 	date: {type: Date, default: Date.now},
 });
 mongoose.model('Orders', OrderSchema);
+
+var ShippingSchema = new Schema({
+	type: String,
+	maxweight: {type: Number, default: 0},
+	maxlength: {type: Number, default: 0},
+	maxwidth: {type: Number, default: 0},
+	maxheight: {type: Number, default: 0},
+	price: {type: Number, default: 0},
+});
+mongoose.model('Shipping', ShippingSchema);
 
 var LogSchema = new Schema({
 	key: String,

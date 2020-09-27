@@ -195,12 +195,12 @@ ul {
 	border-bottom: 2px solid #9f8e27;
 }
 
-#items, #orders, #customers, #customer {
+#items, #orders, #customers, #shippings, #categories {
 	display: grid;
 	margin-top: 20px;
 }
 
-.item, .order, .customer {
+.item, .order, .customer, .shipping, .category {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	padding-top: 20px;
@@ -214,11 +214,17 @@ ul {
 	background: rgba(155, 155, 155, 0.2);
 }
 
+.item > div {
+	max-height: 50px;
+	overflow: hidden;
+}
+
 #form {
 	display: grid;
 	width: 500px;
 	margin: auto;
 	margin-top: 50px;
+	margin-bottom: 50px;
 	grid-gap: 10px;
 }
 
@@ -226,17 +232,15 @@ ul {
 	width: 100%;
 }
 
+#form img {
+	height: 400px;
+	width: auto;
+}
+
 #new {
-	margin: 20px;
+	margin: auto;
+	margin-top: 20px;
 	text-decoration: underline;
-}
-
-#items .items {
-	grid-template-columns: 1fr 1fr 1fr;
-}
-
-#items .item {
-	grid-template-columns: 1fr 1fr 1fr;
 }
 
 .check {

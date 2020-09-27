@@ -29,7 +29,9 @@ this.remove = (by) => {
 }
 
 this.empty = (by, callback) => {
-	Shoppingcart.deleteMany(by).
+	Shoppingcart.updateMany(by, {
+		finished: true,
+	}).
 	exec((err, result) => {
 		if (err) return console.error(err);
 		return callback(result);

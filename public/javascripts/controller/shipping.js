@@ -13,7 +13,9 @@ var Shipping = Backbone.View.extend({
 		return this;
 	},
 	events: {
+		'click #back': () => Backbone.history.navigate('shoppingcart', true),
 		'click #navi': 'navi',
+		'click input': 'normal',
 		'change input': 'input',
 		'click button#next': 'next',
 	},
@@ -22,8 +24,10 @@ var Shipping = Backbone.View.extend({
 		if (el.style.display == 'grid') return el.style.display = 'none';
 		else return el.style.display = 'grid';
 	},
-	input: function(e) {
+	normal: function(e) {
 		e.target.removeAttribute('invalid');
+	},
+	input: function(e) {
 		this.model.set(e.target.name, e.target.value);
 	},
 	next: function() {

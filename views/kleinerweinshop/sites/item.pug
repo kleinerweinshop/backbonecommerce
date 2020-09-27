@@ -1,0 +1,40 @@
+script(type='text/template', id='item-template')
+  div#header
+    div#logo
+      img(src='/images/logo.png')
+    div#navi
+      i(class='fa fa-bars')
+    div.navi
+      a#toindex
+        span Startseite
+      a#toshop
+        span Einkaufen
+      a#toinfo
+        span Steckbrief
+      a#tocart
+        span Warenkorb 
+          span#count (<%-User.get('shoppingcart').length%>)
+  div.content#showcase
+    div.image
+      div#image
+        img(src!='<%-image%>')
+      div#lens
+    div.column
+      h2 <%-name%>
+      div.box
+        textarea(readonly) <%-info%>
+    div#tags
+      <% for(let tag of tags){%>
+      span#tag.tag <%-tag%>
+      <%}%>
+    div.double
+      div.list
+        b <%-price%>€ pro Flasche
+        l + <%-shipping%> € Versand
+        <% if(base > 0) {%>
+        l ( <%-base%> € / 1 l )
+        <%}%>
+      button in den Warenkorb
+    div.right
+      i#back(class='fa fa-back')
+  include ../models/footer.pug

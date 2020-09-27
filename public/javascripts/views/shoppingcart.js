@@ -23,19 +23,23 @@ var ShoppingcartitemView = Backbone.View.extend({
 	},
   events: {
     'click img': 'open',
+    'click #tag': 'search',
     'change input': 'amount',
     'click #remove': 'delete',
   },
   open: function() {
     this.model.open();
   },
+  search: function(e) {
+		Backbone.history.navigate('shop/'+e.target.innerText, true);
+  },
   amount: function(e) {
     if (e.target.value > this.model.get('item').amount) e.target.value = this.model.get('item').amount;
     this.model.set('amount', e.target.value);
   },
   delete: function() {
+    User.get('shoppingcart').remove(this.model);
     this.el.remove();
     this.model.remove();
-    User.set('shoppingcart', User.get('shoppingcart')-1);
   },
 });

@@ -1,0 +1,22 @@
+script(type='text/template', id='shop-template')
+  div#header
+    div#logo
+      img(src='/images/logo.png')
+    div#navi
+      i(class='fa fa-bars')
+    div.navi
+      a#toindex
+        span Startseite
+      a#toinfo
+        span Steckbrief
+      a#tocart
+        span Warenkorb 
+          span#count (<%-User.get('shoppingcart').length%>)
+  div.content
+    div.bar
+      i#back(class='fa fa-back')
+      input#search(placeholder='Suche nach ...')
+      i#find(class='fa fa-search')
+    h2 Produkte
+    div#items(important)
+  include ../models/footer.pug
